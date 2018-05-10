@@ -27,11 +27,12 @@ namespace eBookweb
                     String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(CS))
                     {
-                        SqlCommand cmd = new SqlCommand("insert into Users values('" + tbUname.Text + "', '" + tbEmail.Text + "', '" + tbPwd.Text + "')", con);
+                        SqlCommand cmd = new SqlCommand("insert into Users values('" + tbUname.Text + "', '" + tbPwd.Text + "', '" + tbEmail.Text + "')", con);
                         con.Open();
                         cmd.ExecuteNonQuery();
                         lbmsg.ForeColor = Color.Green;
                         lbmsg.Text = "註冊成功";
+                        Response.Redirect("~/SignIn.aspx");
 
                     }
                 }
