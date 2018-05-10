@@ -25,38 +25,47 @@
     <!---  Middle Content  -->
     <div> <img src="Images/bookself.png" class="img-responsive" alt="Responsive image"></div>
     <form id="form1" runat="server">
-    <div>
-        <div class="navbar navbar-default navbar-fixed-top" role ="navigation">
-            <div class="container">
+        <div>
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                        </button><span>
-                        <a class="navbar-brand" href="Default.aspx">新北市政府消防局 E-BOOK</a>
-                        </span>
+                        </button>
+                        <a class="navbar-brand" href="Default.aspx"><span>
+                            <img alt="Logo" src="Images/badge.png" height="30" /></span>新北市消防局 e-Book</a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="Default.aspx">Home</a></li>
+                            <li><a href="Default.aspx">Home</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Men</li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Shirts</a></li>
+                                    <li><a href="#">Pants</a></li>
+                                    <li><a href="#">Denims</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">Women</li>
+                                    <li role="separator" class="divider"></li>
                                     <li><a href="#">Top</a></li>
                                     <li><a href="#">Leggings</a></li>
                                     <li><a href="#">Denims</a></li>
                                 </ul>
                             </li>
-                            <li><a href="SignUp.aspx">Sign Up</li>
+                            <li class="active"><a href="SignUp.aspx">Sign Up</a></li>
+                            <li><a href="SignIn.aspx">Sign In</a></li>
                         </ul>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
     <!---  Middle Content  -->
 
     <!---  Footer  -->

@@ -23,18 +23,18 @@
 <body>
     <!---  Middle Content  -->
     <form id="form1" runat="server">
-    <div>
-        <div class="navbar navbar-default navbar-fixed-top" role ="navigation">
-            <div class="container">
+        <div>
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                        </button><span>
-                        <a class="navbar-brand" href="Default.aspx">新北市政府消防局 E-BOOK</a>
-                        </span>
+                        </button>
+                        <a class="navbar-brand" href="Default.aspx"><span>
+                            <img alt="Logo" src="Images/badge.png" height="30" /></span>新北市消防局 e-Book</a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -42,19 +42,28 @@
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Men</li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Shirts</a></li>
+                                    <li><a href="#">Pants</a></li>
+                                    <li><a href="#">Denims</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">Women</li>
+                                    <li role="separator" class="divider"></li>
                                     <li><a href="#">Top</a></li>
                                     <li><a href="#">Leggings</a></li>
                                     <li><a href="#">Denims</a></li>
                                 </ul>
                             </li>
-                            <li class="active"><a href="SignUp.aspx">Sign Up</li>
+                            <li class="active"><a href="SignUp.aspx">Sign Up</a></li>
+                            <li><a href="SignIn.aspx">Sign In</a></li>
                         </ul>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
     <!---  Middle Content  -->
 
     <!---  Sign Up  -->
@@ -64,7 +73,7 @@
         <div class="col-xs-11">
         <asp:TextBox ID="tbUname" runat="server" class="form-control" placeholder="輸入帳號"></asp:TextBox>
         </div>
-
+        
         <label class="col-xs-11">信箱</label>
         <div class="col-xs-11">
         <asp:TextBox ID="tbEmail" runat="server" class="form-control" placeholder="輸入信箱"></asp:TextBox>
@@ -83,6 +92,7 @@
         <asp:Button ID="btSignUp" runat="server" class="btn btn-success" Text="註冊" OnClick="btSignUp_Click" />
         </div>
         
+
 
     </div>
     

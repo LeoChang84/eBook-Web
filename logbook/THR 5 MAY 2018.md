@@ -15,3 +15,8 @@
 Thr 10 01:18 2018 
 - Drop down menu error : 
  Drop down menu can not drop down. 
+
+Thr 10 16:26 2018 
+- Drop down menu error : 
+ Fix down menu error 
+- Add Text box error 
