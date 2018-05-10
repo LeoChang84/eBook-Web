@@ -26,4 +26,7 @@ Thr 10 19:47 2018
 - The database may be written delayedly. 
 
 Thr 10 20:25 2018 
-- Set the validator of Sign up.
+- Set the validator of Sign up. 
+
+Thr 10 23:08 2018 
+- The tag of Sign up (in SignIn.aspx) cannot connect to SignUp.aspx
