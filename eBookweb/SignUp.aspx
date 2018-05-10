@@ -75,20 +75,21 @@
         
         <label class="col-xs-11">信箱</label>
         <div class="col-xs-11">
-        <asp:TextBox ID="tbEmail" runat="server" class="form-control" placeholder="輸入信箱"></asp:TextBox>
+        <asp:TextBox ID="tbEmail" runat="server" class="form-control" placeholder="輸入信箱" TextMode="Email"></asp:TextBox>
         </div>
 
         <label class="col-xs-11">密碼</label>
         <div class="col-xs-11">
-        <asp:TextBox ID="tbPwd" runat="server" class="form-control" placeholder="輸入密碼"></asp:TextBox>
+        <asp:TextBox ID="tbPwd" runat="server" class="form-control" placeholder="輸入密碼" TextMode="Password"></asp:TextBox>
         </div>
 
         <label class="col-xs-11">確認密碼</label>
         <div class="col-xs-11">
-        <asp:TextBox ID="tbConPwd" runat="server" class="form-control" placeholder="請確認密碼"></asp:TextBox>
+        <asp:TextBox ID="tbConPwd" runat="server" class="form-control" placeholder="請確認密碼" TextMode="Password"></asp:TextBox>
         </div>
         <div class="col-xs-11 space-vert">
         <asp:Button ID="btSignUp" runat="server" class="btn btn-success" Text="註冊" OnClick="btSignUp_Click" />
+            <asp:Label ID="lbmsg" runat="server" Text=""></asp:Label>
         </div>
        
 

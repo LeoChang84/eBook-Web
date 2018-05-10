@@ -24,3 +24,6 @@ Thr 10 16:26 2018
 Thr 10 19:47 2018 
 - Connect the database to SignUp page 
 - The database may be written delayedly. 
+
+Thr 10 20:25 2018 
+- Set the validator of Sign up.
