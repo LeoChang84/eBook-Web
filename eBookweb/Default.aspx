@@ -23,7 +23,7 @@
 </head>
 <body>
     <!---  Middle Content  -->
-    <div> <img src="Images/bookself.png" class="img-responsive" alt="Responsive image"></div>
+    <div> <img src="Images/bookshelf.png" class="img-responsive" alt="Responsive image"></div>
     <form id="form1" runat="server">
         <div>
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -35,8 +35,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="Default.aspx"><span>
-                            <img alt="Logo" src="Images/badge.png" height="30" /></span>新北市消防局 e-Book</a>
+                        <a class="navbar-brand" href="Default.aspx">新北市消防局 e-Book</a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">

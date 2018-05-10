@@ -33,8 +33,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="Default.aspx"><span>
-                            <img alt="Logo" src="Images/badge.png" height="30" /></span>新北市消防局 e-Book</a>
+                        <a class="navbar-brand" href="Default.aspx">新北市消防局 e-Book</a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -91,7 +90,7 @@
         <div class="col-xs-11 space-vert">
         <asp:Button ID="btSignUp" runat="server" class="btn btn-success" Text="註冊" OnClick="btSignUp_Click" />
         </div>
-        
+       
 
 
     </div>
