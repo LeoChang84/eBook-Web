@@ -77,7 +77,7 @@
                 <div class="form-group">
                     <asp:Label ID="lbSignInPws" runat="server" CssClass="col-md-2 control-label" Text="密碼"></asp:Label>
                     <div class="col-md-3">
-                        <asp:TextBox ID = "tbSignInPwd" CssClass="form-contorl" runat="server"></asp:TextBox>
+                        <asp:TextBox ID = "tbSignInPwd" CssClass="form-contorl" runat="server" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFVSignInPwd" CssClass="text-danger" runat="server" ErrorMessage="請填入密碼" ControlToValidate="tbSignInPwd"></asp:RequiredFieldValidator>
                     </div>
                 </div>
@@ -91,8 +91,13 @@
                 <div class="form-group">
                     <div class="col-md-2"></div>
                     <div class="col-md-6">
-                        <asp:Button ID="btSignUplogin" runat="server" Text="登入" CssClass="btn btn-default" />
-                        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/SignUp.aspx">Sign Up</asp:LinkButton>
+                        <asp:Button ID="btSignUplogin" runat="server" Text="登入" CssClass="btn btn-default" OnClick="btSignUplogin_Click" /></asp:Button>
+                        <asp:LinkButton ID="lkSignIn" runat="server" PostBackUrl="~/SignUp.aspx">Sign Up</asp:LinkButton>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                        <asp:Label ID="lberror" runat="server" CssClass="text-danger"/></asp:Label>
                     </div>
                 </div> 
             </div>
