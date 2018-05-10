@@ -1,15 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="eBookweb.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SignIn.aspx.cs" Inherits="eBookweb.SignIn" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Sign In</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,8 +21,6 @@
     <![endif]-->
 </head>
 <body>
-    <!---  Middle Content  -->
-    <div> <img src="Images/bookshelf.png" class="img-responsive" alt="Responsive image"></div>
     <form id="form1" runat="server">
         <div>
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -59,13 +56,48 @@
                                 </ul>
                             </li>
                             <li><a href="SignUp.aspx">Sign Up</a></li>
-                            <li><a href="SignIn.aspx">Sign In</a></li>
+                            <li class="active"><a href="SignIn.aspx">Sign In</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    <!---  Middle Content  -->
+        <!--- Sign In  -->
+        <div class="container">
+            <div class="form-horizontal">
+                <h4>Login</h4>
+                <hr />
+                <div class="form-group">
+                    <asp:Label ID="lbSignInUserName" runat="server" CssClass="col-md-2 control-label" Text="帳號"></asp:Label>
+                    <div class="col-md-3">
+                        <asp:TextBox ID = "tbSignInUserName" CssClass="form-contorl" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RFVSignInUserName" CssClass="text-danger" runat="server" ErrorMessage="請填入帳號" ControlToValidate="tbSignInUserName"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <asp:Label ID="lbSignInPws" runat="server" CssClass="col-md-2 control-label" Text="密碼"></asp:Label>
+                    <div class="col-md-3">
+                        <asp:TextBox ID = "tbSignInPwd" CssClass="form-contorl" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RFVSignInPwd" CssClass="text-danger" runat="server" ErrorMessage="請填入密碼" ControlToValidate="tbSignInPwd"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                        <asp:CheckBox ID = "cbSignInRmb" runat="server"></asp:CheckBox>
+                        <asp:Label ID="lbSignInRmb" runat="server" CssClass="control-label" Text="記住我"></asp:Label>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                        <asp:Button ID="btSignUplogin" runat="server" Text="登入" CssClass="btn btn-default" />
+                        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/SignUp.aspx">Sign Up</asp:LinkButton>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <!--- Sign In  -->
 
     <!---  Footer  -->
     <footer class="footer-pos">
