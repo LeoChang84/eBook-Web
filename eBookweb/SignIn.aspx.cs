@@ -20,7 +20,7 @@ namespace eBookweb
                 if (Response.Cookies["UNAME"] != null && Request.Cookies["PWD"] != null)
                 {
                     tbSignInUserName.Text = Request.Cookies["UNAME"].Value;
-                    //tbSignInPwd.Text = Request.Cookies["PWD"].Value;
+                    tbSignInPwd.Attributes["value"] = Request.Cookies["PWD"].Value;
                     cbSignInRmb.Checked = true;
                 }
             }
@@ -55,19 +55,28 @@ namespace eBookweb
 
                     if(Utype == "U")
                     {
+                        lberror.ForeColor = Color.Green;
+                        lberror.Text = "一般使用者登入成功";
                         Session["USERNAME"] = tbSignInUserName.Text;
                         Response.Redirect("~/UserHome.aspx");
                     }
                     if (Utype == "A")
                     {
+                        lberror.ForeColor = Color.Green;
+                        lberror.Text = "管理員登入成功";
                         Session["USERNAME"] = tbSignInUserName.Text;
                         Response.Redirect("~/AdminHome.aspx");
                     }
-
+                    if (Utype == "W")
+                    {
+                        lberror.ForeColor = Color.Red;
+                        lberror.Text = "帳號尚未認證, 請點選Contact來聯繫管理人員";
+                    }
 
                 }
                 else
                 {
+                    lberror.ForeColor = Color.Red;
                     lberror.Text = "無效的帳號或密碼!";
                 }
             }

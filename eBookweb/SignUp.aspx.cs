@@ -27,7 +27,7 @@ namespace eBookweb
                     String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(CS))
                     {
-                        SqlCommand cmd = new SqlCommand("insert into Users values('" + tbUname.Text + "', '" + tbPwd.Text + "', '" + tbEmail.Text + "', 'U')", con);
+                        SqlCommand cmd = new SqlCommand("insert into Users values('" + tbUname.Text + "', '" + tbPwd.Text + "', '" + tbEmail.Text + "', 'C')", con);
                         con.Open();
                         cmd.ExecuteNonQuery();
                         lbmsg.ForeColor = Color.Green;

@@ -7,14 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace eBookweb
 {
-    public partial class UserHome : System.Web.UI.Page
+    public partial class UserMaster : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["USERNAME"] != null)
             {
-                lbUserHomesuccess.Text = Session["USERNAME"].ToString()+ "您好, 請點選Home以進入首頁"+"";
-                Response.Redirect("~/DefaultUser.aspx");
+
             }
             else
             {
@@ -22,10 +21,10 @@ namespace eBookweb
             }
         }
 
-        protected void btUserHomeSignOut_Click(object sender, EventArgs e)
+        protected void btUMasterLogout_Click(object sender, EventArgs e)
         {
             Session["USERNAME"] = null;
-            Response.Redirect("~/Default.aspx");
+            Response.Redirect("~/ Default.aspx");
         }
     }
 }
