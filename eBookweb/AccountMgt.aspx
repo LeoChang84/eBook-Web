@@ -28,7 +28,7 @@
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-6">
-                    <asp:Button ID="btActUpload" runat="server" Text="新增至資料庫" CssClass="btn btn-default" OnClick="btActUploadn_Click" /></asp:Button>
+                    <asp:Button ID="btActUpload" runat="server" Text="新增至資料庫" CssClass="btn btn-default" OnClick="btActUploadn_Click" ></asp:Button>
                     <asp:Label ID="lbActmsg" runat="server" Text=""></asp:Label>
                 </div>
             </div>
