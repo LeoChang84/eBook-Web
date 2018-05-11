@@ -44,8 +44,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">管理使用者</a></li>
-                                    <li><a href="#">管理檔案</a></li>
+                                    <li><a href="AccountMgt.aspx">Account Management</a></li>
+                                    <li><a href="#">File Management</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -65,14 +65,7 @@
     <!---  Admin page link  -->
          
 
-     <!---  Footer  -->
-    <footer class="footer-pos">
-        <div class="container">
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2018 github/LeoChang84.com &middot; <a href="Default.aspx">Home</a> &middot; <a href="#">About</a> &middot; <a href="#">Contact</a></a></p>
-        </div>
-    </footer>    
-    <!---  Footer  -->
+
 
     </form>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
