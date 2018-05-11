@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>新北市消防局e-Book入口網</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -42,22 +42,6 @@
                             <li><a href="Default.aspx">Home</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown-header">Men</li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Shirts</a></li>
-                                    <li><a href="#">Pants</a></li>
-                                    <li><a href="#">Denims</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li class="dropdown-header">Women</li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Top</a></li>
-                                    <li><a href="#">Leggings</a></li>
-                                    <li><a href="#">Denims</a></li>
-                                </ul>
-                            </li>
                             <li><a href="SignUp.aspx">Sign Up</a></li>
                             <li><a href="SignIn.aspx">Sign In</a></li>
                         </ul>
