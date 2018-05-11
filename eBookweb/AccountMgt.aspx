@@ -5,21 +5,21 @@
             <h2>帳戶管理系統</h2>
             <hr />
             <div class="form-group">
-                <asp:Label ID="lbActUserName" runat="server" CssClass="col-md-2 control-label" Text="新增帳號"></asp:Label>
+                <asp:Label ID="lbActUserName" runat="server" CssClass="col-md-2 control-label" Text="新增帳號:"></asp:Label>
                 <div class="col-md-3">
                     <asp:TextBox ID = "tbActUserName" CssClass="form-contorl" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RFVActUserName" CssClass="text-danger" runat="server" ErrorMessage="請填入帳號" ControlToValidate="tbActUserName"></asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="form-group">
-                <asp:Label ID="lbActPwd" runat="server" CssClass="col-md-2 control-label" Text="新增密碼"></asp:Label>
+                <asp:Label ID="lbActPwd" runat="server" CssClass="col-md-2 control-label" Text="新增密碼:"></asp:Label>
                 <div class="col-md-3">
                     <asp:TextBox ID = "tbActPwd" CssClass="form-contorl" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RFVActPwd" CssClass="text-danger" runat="server" ErrorMessage="請填入密碼" ControlToValidate="tbActPwd"></asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="form-group">
-                <asp:Label ID="lbActEmail" runat="server" CssClass="col-md-2 control-label" Text="新增信箱"></asp:Label>
+                <asp:Label ID="lbActEmail" runat="server" CssClass="col-md-2 control-label" Text="新增信箱:"></asp:Label>
                 <div class="col-md-3">
                     <asp:TextBox ID = "tbActEmail" CssClass="form-contorl" runat="server" TextMode="Email"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RFVActEmail" CssClass="text-danger" runat="server" ErrorMessage="請填入信箱" ControlToValidate="tbActEmail"></asp:RequiredFieldValidator>
@@ -56,7 +56,7 @@
                         <td><%# Eval("Username") %></td>
                         <td><%# Eval("Password") %></td>
                         <td><%# Eval("Email") %></td>
-                        <td><%# Eval("Usertype") %></td>
+                        <td><asp:Button ID="Button1" runat="server" Text="Button" /></td>
                     </tr>
 
                 </ItemTemplate>
