@@ -53,7 +53,6 @@ namespace eBookweb
 
                     }
                 }
-
             }
         }
 
@@ -117,6 +116,31 @@ namespace eBookweb
             {
                 lbActerrormsg.ForeColor = Color.Red;
                 lbActerrormsg.Text = "上傳失敗";
+            }
+        }
+
+        protected void gvAct_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    string query = "DELETE FROM Users WHERE Uid = @id";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@id", Convert.ToInt32(gvAct.DataKeys[e.RowIndex].Value.ToString()));
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    gvAct.EditIndex = -1;
+                    BindRptAct();
+                    lbActerrormsg.ForeColor = Color.Green;
+                    lbActerrormsg.Text = "刪除成功";
+                }
+            }
+            catch (Exception ex)
+            {
+                lbActerrormsg.ForeColor = Color.Red;
+                lbActerrormsg.Text = "刪除失敗";
             }
         }
     }

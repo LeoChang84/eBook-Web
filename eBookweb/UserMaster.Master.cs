@@ -24,7 +24,7 @@ namespace eBookweb
         protected void btUMasterLogout_Click(object sender, EventArgs e)
         {
             Session["USERNAME"] = null;
-            Response.Redirect("~/ Default.aspx");
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

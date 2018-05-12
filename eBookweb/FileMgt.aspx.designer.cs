@@ -112,12 +112,21 @@ namespace eBookweb {
         protected global::System.Web.UI.WebControls.Label lbFilemsg;
         
         /// <summary>
-        /// RtrFile control.
+        /// gvFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RtrFile;
+        protected global::System.Web.UI.WebControls.GridView gvFile;
+        
+        /// <summary>
+        /// lbFileerrormsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbFileerrormsg;
     }
 }
