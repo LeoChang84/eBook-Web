@@ -121,21 +121,12 @@ namespace eBookweb {
         protected global::System.Web.UI.WebControls.GridView gvAct;
         
         /// <summary>
-        /// lbActSuccess control.
+        /// lbActerrormsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbActSuccess;
-        
-        /// <summary>
-        /// lbActerror control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbActerror;
+        protected global::System.Web.UI.WebControls.Label lbActerrormsg;
     }
 }

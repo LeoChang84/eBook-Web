@@ -34,8 +34,7 @@
             </div>
         </div>
         <h2>帳號管理名單</h2>
-        <asp:GridView ID="gvAct" runat="server" AutoGenerateColumns="False"  ShowHeaderWhenEmpty="True" CellPadding="3" GridLines="Horizontal" Height="147px" Width="276px" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" OnRowEditing="gvAct_RowEditing">
-            <AlternatingRowStyle BackColor="#F7F7F7" />
+        <asp:GridView ID="gvAct" runat="server" AutoGenerateColumns="False"  ShowHeaderWhenEmpty="True" CellPadding="4" Height="147px" Width="276px" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" OnRowEditing="gvAct_RowEditing" OnRowCancelingEdit="gvAct_RowCancelingEdit" OnRowUpdating="gvAct_RowUpdating" CellSpacing="2" ForeColor="Black" DataKeyNames="Uid" >
             <Columns>
                 <asp:TemplateField HeaderText="帳號">
                     <ItemTemplate>
@@ -73,6 +72,18 @@
                     </FooterTemplate>
                 </asp:TemplateField>
                 
+                <asp:TemplateField HeaderText="類別">
+                    <ItemTemplate>
+                        <asp:Label ID="lbUsertypeAct" runat="server" Text='<%# Eval("Usertype") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="tbUsertypeAct" runat="server" Text='<%# Eval("Usertype") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="tbFooterEditUsertypeAct" runat="server"></asp:TextBox>
+                    </FooterTemplate>
+                </asp:TemplateField>
+
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:ImageButton ID="imEdit" ImageUrl="~/Images/icon_edit.png" CommandName="edit" ToolTip="Edit" Width="20px" Height="20px" runat="server" CausesValidation="False" />
@@ -80,28 +91,27 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:ImageButton ID="imUpdate" ImageUrl="~/Images/icon_update.png" CommandName="update" ToolTip="update" Width="20px" Height="20px" runat="server" CausesValidation="False" />
-                        <asp:ImageButton ID="imDel" ImageUrl="~/Images/icon_delete.png" CommandName="delete" ToolTip="delete" Width="20px" Height="20px" runat="server" />
+                        <asp:ImageButton ID="imDel" ImageUrl="~/Images/icon_cancel.png" CommandName="cancel" ToolTip="cancel" Width="20px" Height="20px" runat="server" CausesValidation="False" />
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="tbFooterEditEmailAct" runat="server"></asp:TextBox>
                     </FooterTemplate>
                 </asp:TemplateField>
             </Columns>
-            <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-            <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-            <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-            <SortedAscendingCellStyle BackColor="#F4F4FD" />
-            <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-            <SortedDescendingCellStyle BackColor="#D8D8F0" />
-            <SortedDescendingHeaderStyle BackColor="#3E3277" />
+            <FooterStyle BackColor="#CCCCCC" />
+            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+            <RowStyle BackColor="White" />
+            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#808080" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
-        <br />
-        <asp:Label ID="lbActSuccess" runat="server" Text="上傳成功"></asp:Label>
-        <br />
-        <asp:Label ID="lbActerror" runat="server" Text="上傳失敗"></asp:Label>
-
+        <asp:Label ID="lbActerrormsg" runat="server" Text="上傳失敗"></asp:Label>
+         <br />
+         <br />
+         <br />
     </div>
 
 </asp:Content>

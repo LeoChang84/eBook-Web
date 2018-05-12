@@ -39,7 +39,17 @@ namespace eBookweb
                             gvAct.DataSource = dtAct;
                             gvAct.DataBind();
                         }
-
+                        else
+                        {
+                            dtAct.Rows.Add(dtAct.NewRow());
+                            gvAct.DataSource = dtAct;
+                            gvAct.DataBind();
+                            gvAct.Rows[0].Cells.Clear();
+                            gvAct.Rows[0].Cells.Add(new TableCell());
+                            gvAct.Rows[0].Cells[0].ColumnSpan = dtAct.Columns.Count;
+                            gvAct.Rows[0].Cells[0].Text = "No Data Found ..!";
+                            gvAct.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
+                        }
 
                     }
                 }
@@ -48,23 +58,66 @@ namespace eBookweb
         }
 
         protected void btActUploadn_Click(object sender, EventArgs e)
-        {
-            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+        {   
+            try
             {
-                SqlCommand cmd = new SqlCommand("insert into Users values('" + tbActUserName.Text + "', '" + tbActPwd.Text + "', '" + tbActEmail.Text + "', 'U')", con);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                lbActmsg.ForeColor = Color.Green;
-                lbActmsg.Text = "新增成功";
+                String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("insert into Users values('" + tbActUserName.Text + "', '" + tbActPwd.Text + "', '" + tbActEmail.Text + "', 'U')", con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    lbActmsg.ForeColor = Color.Green;
+                    lbActmsg.Text = "新增成功";
+                }
+            }
+            catch (Exception ex)
+            {
+                lbActmsg.Text = "資料新增失敗";
             }
         }
 
         protected void gvAct_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvAct.EditIndex = e.NewEditIndex;
+            lbActerrormsg.Text = "";
             BindRptAct();
         }
 
+        protected void gvAct_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvAct.EditIndex = -1;
+            lbActerrormsg.Text = "";
+            BindRptAct();
+        }
+
+        protected void gvAct_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    string query = "UPDATE Users SET Username=@Username,Password=@Password,Email=@Email,Usertype=@Usertype WHERE Uid = @id";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@Username", (gvAct.Rows[e.RowIndex].FindControl("tbEditUserNameAct") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@Password", (gvAct.Rows[e.RowIndex].FindControl("tbEditPwdAct") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@Email", (gvAct.Rows[e.RowIndex].FindControl("tbEditEmailAct") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@Usertype", (gvAct.Rows[e.RowIndex].FindControl("tbUsertypeAct") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@id", Convert.ToInt32(gvAct.DataKeys[e.RowIndex].Value.ToString()));
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    gvAct.EditIndex = -1;
+                    BindRptAct();
+                    lbActerrormsg.ForeColor = Color.Green;
+                    lbActerrormsg.Text = "修改成功";
+                }
+            }
+            catch (Exception ex)
+            {
+                lbActerrormsg.ForeColor = Color.Red;
+                lbActerrormsg.Text = "上傳失敗";
+            }
+        }
     }
 }
