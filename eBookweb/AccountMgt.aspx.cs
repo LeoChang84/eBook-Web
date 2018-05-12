@@ -34,8 +34,12 @@ namespace eBookweb
                     {
                         DataTable dtAct = new DataTable();
                         sda.Fill(dtAct);
-                        RtrAct.DataSource = dtAct;
-                        RtrAct.DataBind();
+                        if (dtAct.Rows.Count > 0)
+                        {
+                            gvAct.DataSource = dtAct;
+                            gvAct.DataBind();
+                        }
+
 
                     }
                 }
@@ -55,5 +59,12 @@ namespace eBookweb
                 lbActmsg.Text = "新增成功";
             }
         }
+
+        protected void gvAct_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvAct.EditIndex = e.NewEditIndex;
+            BindRptAct();
+        }
+
     }
 }

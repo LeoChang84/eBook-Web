@@ -34,40 +34,74 @@
             </div>
         </div>
         <h2>帳號管理名單</h2>
-        <div class = "panel panel-default">
-           <div class = "panel-heading">Panel Heading</div>
-   
-            <asp:Repeater ID="RtrAct" runat="server">
-                <HeaderTemplate>
-                    <table class = "table">
-                        <thead> 
-                            <tr>
-                             <th>帳號</th>
-                             <th>密碼</th>
-                             <th>信箱</th>
-                             <th>修改</th>
-                          </tr>
-                        </thead> 
-                        <tbody>
-                </HeaderTemplate>
+        <asp:GridView ID="gvAct" runat="server" AutoGenerateColumns="False"  ShowHeaderWhenEmpty="True" CellPadding="3" GridLines="Horizontal" Height="147px" Width="276px" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" OnRowEditing="gvAct_RowEditing">
+            <AlternatingRowStyle BackColor="#F7F7F7" />
+            <Columns>
+                <asp:TemplateField HeaderText="帳號">
+                    <ItemTemplate>
+                        <asp:Label ID="lbUserNameAct" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="tbEditUserNameAct" runat="server" Text='<%# Eval("Username") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="tbFooterEditUserNameAct" runat="server"></asp:TextBox>
+                    </FooterTemplate>
+                </asp:TemplateField>
 
-                <ItemTemplate>
-                    <tr>
-                        <td><%# Eval("Username") %></td>
-                        <td><%# Eval("Password") %></td>
-                        <td><%# Eval("Email") %></td>
-                        <td><asp:Button ID="Button1" runat="server" Text="Button" /></td>
-                    </tr>
+                <asp:TemplateField HeaderText="密碼">
+                    <ItemTemplate>
+                        <asp:Label ID="lbPwdAct" runat="server" Text='<%# Eval("Password") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="tbEditPwdAct" runat="server" Text='<%# Eval("Password") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="tbFooterPwdAct" runat="server"></asp:TextBox>
+                    </FooterTemplate>
+                </asp:TemplateField>
 
-                </ItemTemplate>
+                <asp:TemplateField HeaderText="信箱">
+                    <ItemTemplate>
+                        <asp:Label ID="lbEmailAct" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="tbEditEmailAct" runat="server" Text='<%# Eval("Email") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="tbFooterEditEmailAct" runat="server"></asp:TextBox>
+                    </FooterTemplate>
+                </asp:TemplateField>
+                
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:ImageButton ID="imEdit" ImageUrl="~/Images/icon_edit.png" CommandName="edit" ToolTip="Edit" Width="20px" Height="20px" runat="server" CausesValidation="False" />
+                        <asp:ImageButton ID="imDel" ImageUrl="~/Images/icon_delete.png" CommandName="delete" ToolTip="delete" Width="20px" Height="20px" runat="server" CausesValidation="False" />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:ImageButton ID="imUpdate" ImageUrl="~/Images/icon_update.png" CommandName="update" ToolTip="update" Width="20px" Height="20px" runat="server" CausesValidation="False" />
+                        <asp:ImageButton ID="imDel" ImageUrl="~/Images/icon_delete.png" CommandName="delete" ToolTip="delete" Width="20px" Height="20px" runat="server" />
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="tbFooterEditEmailAct" runat="server"></asp:TextBox>
+                    </FooterTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+            <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+            <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+            <SortedAscendingCellStyle BackColor="#F4F4FD" />
+            <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+            <SortedDescendingCellStyle BackColor="#D8D8F0" />
+            <SortedDescendingHeaderStyle BackColor="#3E3277" />
+        </asp:GridView>
+        <br />
+        <asp:Label ID="lbActSuccess" runat="server" Text="上傳成功"></asp:Label>
+        <br />
+        <asp:Label ID="lbActerror" runat="server" Text="上傳失敗"></asp:Label>
 
-                <FooterTemplate>
-                        </tbody>
-                    </table>
-                </FooterTemplate>
-
-            </asp:Repeater>
-        </div>
     </div>
 
 </asp:Content>

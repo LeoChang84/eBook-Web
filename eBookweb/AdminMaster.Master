@@ -49,7 +49,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <asp:Button ID="btAdminLogout" runat="server" class="btn btn-default navbar-btn" Text="Logout" OnClick="btAdminLogout_Click(); return false;" />
+                                <asp:Button ID="btAdminLogout" runat="server" class="btn btn-default navbar-btn" Text="Logout" OnClick="btAdminLogout_Click" CausesValidation="False" />
                             </li>
                         </ul>
                     </div>

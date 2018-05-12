@@ -112,12 +112,30 @@ namespace eBookweb {
         protected global::System.Web.UI.WebControls.Label lbActmsg;
         
         /// <summary>
-        /// RtrAct control.
+        /// gvAct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RtrAct;
+        protected global::System.Web.UI.WebControls.GridView gvAct;
+        
+        /// <summary>
+        /// lbActSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbActSuccess;
+        
+        /// <summary>
+        /// lbActerror control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbActerror;
     }
 }
