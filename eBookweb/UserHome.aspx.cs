@@ -11,12 +11,7 @@ namespace eBookweb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["USERNAME"] != null)
-            {
-                lbUserHomesuccess.Text = Session["USERNAME"].ToString()+ "您好, 請點選Home以進入首頁"+"";
-                Response.Redirect("~/DefaultUser.aspx");
-            }
-            else
+            if (Session["USERNAME"] == null)
             {
                 Response.Redirect("~/SignIn.aspx");
             }

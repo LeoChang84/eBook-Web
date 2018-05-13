@@ -13,7 +13,7 @@ namespace eBookweb
         {
             if (Session["USERNAME"] != null)
             {
-
+                Response.Redirect("~/DefaultUser.aspx");
             }
             else
             {

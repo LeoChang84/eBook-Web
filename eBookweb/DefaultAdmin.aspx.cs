@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Drawing;
+using System.Collections;
 
 namespace eBookweb
 {
@@ -34,10 +35,61 @@ namespace eBookweb
                         RptDefaultAdmin.DataSource = dtDefaultUser;
                         RptDefaultAdmin.DataBind();
 
+                        //Create the PagedDataSource that will be used in paging
+                        PagedDataSource pgitems = new PagedDataSource();
+                        pgitems.DataSource = dtDefaultUser.DefaultView;
+                        pgitems.AllowPaging = true;
+
+                        //Control page size from here 
+                        pgitems.PageSize = 12;
+                        pgitems.CurrentPageIndex = PageNumber;
+                        if (pgitems.PageCount > 1)
+                        {
+                            rptPaging.Visible = true;
+                            ArrayList pages = new ArrayList();
+                            for (int i = 0; i <= pgitems.PageCount - 1; i++)
+                            {
+                                pages.Add((i + 1).ToString());
+                            }
+                            rptPaging.DataSource = pages;
+                            rptPaging.DataBind();
+                        }
+                        else
+                        {
+                            rptPaging.Visible = false;
+                        }
+
+                        //Finally, set the datasource of the repeater
+                        RptDefaultAdmin.DataSource = pgitems;
+                        RptDefaultAdmin.DataBind();
+
                     }
                 }
 
             }
+
+ 
+        }
+
+        public int PageNumber
+        {
+            get
+            {
+                if (ViewState["PageNumber"] != null)
+                {
+                    return Convert.ToInt32(ViewState["PageNumber"]);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            set { ViewState["PageNumber"] = value; }
+        }
+        protected void rptPaging_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            PageNumber = Convert.ToInt32(e.CommandArgument) - 1;
+            BindFilesRepeater();
         }
     }
 }

@@ -19,7 +19,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body style="background-image:url('Images/Home.jpg');background-size:cover;">
     <form id="form1" runat="server">
         <div>
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -47,6 +47,8 @@
             </div>
         </div>
         <asp:Label ID="lbUserHomesuccess" runat="server" CssClass="text-success"></asp:Label>
+    <h3>使用者您好, 歡迎光臨新北市消防局e-book</h3>
+    <h3>請點選Home來觀看圖書</h3>
     <!---  Footer  -->
     <footer class="footer-pos">
         <div class="container">

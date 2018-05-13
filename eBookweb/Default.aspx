@@ -21,9 +21,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+
+<body style="background-image:url('Images/defaultground.png');background-size:cover;" >
     <!---  Middle Content  -->
-    <div> <img src="Images/bookshelf.png" class="img-responsive" alt="Responsive image"/></div>
     <form id="form1" runat="server">
         <div>
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -50,15 +50,17 @@
             </div>
         </div>
     <!---  Middle Content  -->
-
-    <!---  Footer  -->
-    <footer class="footer-pos">
-        <div class="container">
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2018 github/LeoChang84.com &middot; <a href="Default.aspx">Home</a> &middot; <a href="#">About</a> &middot; <a href="#">Contact</a></p>
-        </div>
-    </footer>
-    <!---  Footer  -->
+        
+        <!---  Footer  -->
+        <footer>
+            <div class="footer-pos">
+                <div class="container">
+                    <p class="pull-right"><a href="#">Back to top</a></p>
+                    <p>&copy; 2018 github/LeoChang84.com &middot; <a href="Default.aspx">Home</a> &middot; <a href="#">About</a> &middot; <a href="#">Contact</a></p>
+                </div>
+            </div>
+        </footer>
+        <!---  Footer  -->
 
     </form>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
