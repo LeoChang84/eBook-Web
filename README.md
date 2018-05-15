@@ -18,8 +18,8 @@ An example of demonstrate the ebook web with asp.net & [somee.com](https://somee
 
 ### Each Page screenshot
 
-![](https://imgur.com/RhosdLr)  ![](https://imgur.com/2JaFus2) ![](https://imgur.com/7l7c5Ce)
+![alt](https://imgur.com/RhosdLr)  ![alt](https://imgur.com/2JaFus2) ![alt](https://imgur.com/7l7c5Ce)
 
-![](https://imgur.com/Y4Z5aH6)  ![](https://imgur.com/n3dgTZp)  ![](https://imgur.com/5uSswLH)
+![alt](https://imgur.com/Y4Z5aH6)  ![alt](https://imgur.com/n3dgTZp)  ![alt](https://imgur.com/5uSswLH)
 
-![](https://imgur.com/Y6aeRG5)
+![alt](https://imgur.com/Y6aeRG5)
