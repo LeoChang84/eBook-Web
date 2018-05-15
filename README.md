@@ -18,16 +18,16 @@ An example of demonstrate the ebook web with asp.net & [somee.com](https://somee
 
 ### Each Page screenshot
 
-![alt](https://imgur.com/RhosdLr)  
+![alt](https://imgur.com/RhosdLr | width=100)  
 
-![alt](https://imgur.com/2JaFus2) 
+![alt](https://imgur.com/2JaFus2 | width=100) 
 
-![alt](https://imgur.com/7l7c5Ce)
+![alt](https://imgur.com/7l7c5Ce | width=100)
 
-![alt](https://imgur.com/Y4Z5aH6)  
+![alt](https://imgur.com/Y4Z5aH6 | width=100)  
 
-![alt](https://imgur.com/n3dgTZp)  
+![alt](https://imgur.com/n3dgTZp | width=100)  
 
-![alt](https://imgur.com/5uSswLH)
+![alt](https://imgur.com/5uSswLH | width=100)
 
-![alt](https://imgur.com/Y6aeRG5)
+![alt](https://imgur.com/Y6aeRG5 | width=100)
