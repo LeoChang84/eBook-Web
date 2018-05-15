@@ -39,8 +39,8 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="DefaultAdmin.aspx">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="https://www.fire.ntpc.gov.tw/">About</a></li>
+                            <li><a href="https://www.fire.ntpc.gov.tw/">Contact</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
                                 <ul class="dropdown-menu">

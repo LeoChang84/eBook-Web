@@ -28,58 +28,67 @@ namespace eBookweb
 
         protected void btSignUplogin_Click(object sender, EventArgs e)
         {
-            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            try
             {
-                SqlCommand cmd = new SqlCommand("select * from Users where Username='"+ tbSignInUserName.Text + "' and Password='"+ tbSignInPwd.Text + "' ", con);
-                con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                if (dt.Rows.Count != 0)
-                {   
-                    if (cbSignInRmb.Checked)
+                String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("select * from Users where Username='" + tbSignInUserName.Text + "' and Password='" + tbSignInPwd.Text + "' ", con);
+                    con.Open();
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    if (dt.Rows.Count != 0)
                     {
-                        Response.Cookies["UNAME"].Value = tbSignInUserName.Text;
-                        Response.Cookies["PWD"].Value = tbSignInPwd.Text;
-                        Response.Cookies["UNAME"].Expires = DateTime.Now.AddDays(15);
-                        Response.Cookies["PWD"].Expires = DateTime.Now.AddDays(15);
+                        if (cbSignInRmb.Checked)
+                        {
+                            Response.Cookies["UNAME"].Value = tbSignInUserName.Text;
+                            Response.Cookies["PWD"].Value = tbSignInPwd.Text;
+                            Response.Cookies["UNAME"].Expires = DateTime.Now.AddDays(15);
+                            Response.Cookies["PWD"].Expires = DateTime.Now.AddDays(15);
+                        }
+                        else
+                        {
+                            Response.Cookies["UNAME"].Expires = DateTime.Now.AddDays(-1);
+                            Response.Cookies["PWD"].Expires = DateTime.Now.AddDays(-1);
+                        }
+                        string Utype;
+                        Utype = dt.Rows[0][4].ToString().Trim();
+
+                        if (Utype == "U")
+                        {
+                            lberror.ForeColor = Color.Green;
+                            lberror.Text = "一般使用者登入成功";
+                            Session["USERNAME"] = tbSignInUserName.Text;
+                            Response.Redirect("~/UserHome.aspx");
+                        }
+                        if (Utype == "A")
+                        {
+                            lberror.ForeColor = Color.Green;
+                            lberror.Text = "管理員登入成功";
+                            Session["USERNAME"] = tbSignInUserName.Text;
+                            Response.Redirect("~/AdminHome.aspx");
+                        }
+                        if (Utype == "W")
+                        {
+                            lberror.ForeColor = Color.Red;
+                            lberror.Text = "帳號尚未認證, 請點選Contact來聯繫管理人員";
+                        }
+
                     }
                     else
                     {
-                        Response.Cookies["UNAME"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["PWD"].Expires = DateTime.Now.AddDays(-1);
-                    }
-                    string Utype;
-                    Utype = dt.Rows[0][4].ToString().Trim();
-
-                    if(Utype == "U")
-                    {
-                        lberror.ForeColor = Color.Green;
-                        lberror.Text = "一般使用者登入成功";
-                        Session["USERNAME"] = tbSignInUserName.Text;
-                        Response.Redirect("~/UserHome.aspx");
-                    }
-                    if (Utype == "A")
-                    {
-                        lberror.ForeColor = Color.Green;
-                        lberror.Text = "管理員登入成功";
-                        Session["USERNAME"] = tbSignInUserName.Text;
-                        Response.Redirect("~/AdminHome.aspx");
-                    }
-                    if (Utype == "W")
-                    {
                         lberror.ForeColor = Color.Red;
-                        lberror.Text = "帳號尚未認證, 請點選Contact來聯繫管理人員";
+                        lberror.Text = "無效的帳號或密碼!";
                     }
-
-                }
-                else
-                {
-                    lberror.ForeColor = Color.Red;
-                    lberror.Text = "無效的帳號或密碼!";
                 }
             }
+            catch (Exception ex)
+            {
+                lberror.ForeColor = Color.Red;
+                lberror.Text = ex.Message;
+            }
+
         }
     }
 }

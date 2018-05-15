@@ -40,8 +40,8 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="Default.aspx">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="https://www.fire.ntpc.gov.tw/">About</a></li>
+                            <li><a href="https://www.fire.ntpc.gov.tw/">Contact</a></li>
                             <li><a href="SignUp.aspx">Sign Up</a></li>
                             <li><a href="SignIn.aspx">Sign In</a></li>
                         </ul>
@@ -55,8 +55,8 @@
         <footer>
             <div class="footer-pos">
                 <div class="container">
-                    <p class="pull-right"><a href="#">Back to top</a></p>
-                    <p>&copy; 2018 github/LeoChang84.com &middot; <a href="Default.aspx">Home</a> &middot; <a href="#">About</a> &middot; <a href="#">Contact</a></p>
+                    <p class="pull-right"><a href="#form1">Back to top</a></p>
+                    <p>&copy; 2018 github/LeoChang84.com &middot;</p>
                 </div>
             </div>
         </footer>

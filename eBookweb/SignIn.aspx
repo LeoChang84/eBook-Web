@@ -1,8 +1,8 @@
-﻿t<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SignIn.aspx.cs" Inherits="eBookweb.SignIn" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SignIn.aspx.cs" Inherits="eBookweb.SignIn" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -88,14 +88,6 @@
         </div>
         <!--- Sign In  -->
 
-    <!---  Footer  -->
-    <footer class="footer-pos">
-        <div class="container">
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2018 github/LeoChang84.com &middot; <a href="Default.aspx">Home</a> &middot; <a href="#">About</a> &middot; <a href="#">Contact</a></p>
-        </div>
-    </footer>
-    <!---  Footer  -->
 
     </form>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -11,11 +11,7 @@ namespace eBookweb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["USERNAME"] != null)
-            {
-                Response.Redirect("~/DefaultUser.aspx");
-            }
-            else
+            if (Session["USERNAME"] == null)
             {
                 Response.Redirect("~/SignIn.aspx");
             }

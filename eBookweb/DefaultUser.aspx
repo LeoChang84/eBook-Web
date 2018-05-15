@@ -1,17 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserMaster.Master" AutoEventWireup="true" CodeBehind="DefaultUser.aspx.cs" Inherits="eBookweb.DefaultUser" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="CP4User" runat="server">
-    <div> <img src="Images/bookshelf1.png" class="img-responsive" alt="Responsive image" />
-    <div class = "row">
+    <div class = "row" style="background-image: url('Images/default.png')">
         <asp:Repeater ID="RptDefaultUser" runat="server">
-            
+      
             <ItemTemplate>
                 <div class = "col-sm-5 col-md-2">
-                    <div class = "thumbnail">
+                    <div class = "thumbnail" style="min-height:260px;height:260px;">
                         <a href="<%# (Eval("Link")) %>">
-                            <img src = "Images/badge.png" alt = "Generic placeholder thumbnail">
+                            <img src = "<%# (Eval("ImgPath")) %>"  alt = "Generic placeholder thumbnail">
                         </a>    
-                        <div class = "caption"><%#Eval("Brief") %></div>
                     </div>
+                    <div class = "caption" style="width:180px;overflow:hidden;height:40px;line-height:20px;"><%#Eval("Brief") %></div>
+                    <br />
                </div>
            </ItemTemplate>
         </asp:Repeater>
