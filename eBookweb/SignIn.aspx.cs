@@ -33,7 +33,7 @@ namespace eBookweb
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
-                    SqlCommand cmd = new SqlCommand("select * from Users where Username='" + tbSignInUserName.Text + "' and Password='" + tbSignInPwd.Text + "' ", con);
+                    SqlCommand cmd = new SqlCommand("select * from UsersData where UserName='" + tbSignInUserName.Text + "' and UserPassword='" + tbSignInPwd.Text + "' ", con);
                     con.Open();
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -52,27 +52,37 @@ namespace eBookweb
                             Response.Cookies["UNAME"].Expires = DateTime.Now.AddDays(-1);
                             Response.Cookies["PWD"].Expires = DateTime.Now.AddDays(-1);
                         }
-                        string Utype;
-                        Utype = dt.Rows[0][4].ToString().Trim();
+                        string UserType;
+                        UserType = dt.Rows[0][6].ToString().Trim(); //Get User Type from sixth row 
 
-                        if (Utype == "U")
-                        {
-                            lberror.ForeColor = Color.Green;
-                            lberror.Text = "一般使用者登入成功";
-                            Session["USERNAME"] = tbSignInUserName.Text;
-                            Response.Redirect("~/UserHome.aspx");
-                        }
-                        if (Utype == "A")
+
+                        if (UserType == "Admin")
                         {
                             lberror.ForeColor = Color.Green;
                             lberror.Text = "管理員登入成功";
                             Session["USERNAME"] = tbSignInUserName.Text;
                             Response.Redirect("~/AdminHome.aspx");
                         }
-                        if (Utype == "W")
+                        if (UserType == "Manager")
+                        {
+                            lberror.ForeColor = Color.Green;
+                            lberror.Text = "科室管理員登入成功";
+                            Session["USERNAME"] = tbSignInUserName.Text;
+                            Response.Redirect("~/ManagerHome.aspx");
+                        }
+
+                        if (UserType == "User")
+                        {
+                            lberror.ForeColor = Color.Green;
+                            lberror.Text = "一般使用者登入成功";
+                            Session["USERNAME"] = tbSignInUserName.Text;
+                            Response.Redirect("~/UserHome.aspx");
+                        }
+
+                        if (UserType == "Pending")
                         {
                             lberror.ForeColor = Color.Red;
-                            lberror.Text = "帳號尚未認證, 請點選Contact來聯繫管理人員";
+                            lberror.Text = "帳號尚未認證, 請聯繫科室管理人員";
                         }
 
                     }

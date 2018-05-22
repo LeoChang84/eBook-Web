@@ -9,17 +9,16 @@
         <hr />
         
         <asp:Repeater ID="RptDefaultUser" runat="server">
-      
             <ItemTemplate>
                 <div class = "col-sm-5 col-md-2">
-                    <div class = "thumbnail" style="min-height:260px;height:260px;">
+                    <div class = "thumbnail" style="min-height:290px;height:300px;">
                         <a href="<%# (Eval("Link")) %>">
                             <img src = "<%# (Eval("ImgPath")) %>"  alt = "Generic placeholder thumbnail">
                         </a>    
+                        <div class = "caption" style="width:160px;overflow:hidden;height:70px;line-height:20px;"><%#Eval("Brief") %></div>
+                        <br />
                     </div>
-                    <div class = "caption" style="width:180px;overflow:hidden;height:40px;line-height:20px;"><%#Eval("Brief") %></div>
-                    <br />
-               </div>
+                </div>
            </ItemTemplate>
         </asp:Repeater>
     </div>

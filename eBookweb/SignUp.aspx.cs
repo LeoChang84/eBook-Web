@@ -20,14 +20,14 @@ namespace eBookweb
 
         protected void btSignUp_Click(object sender, EventArgs e)
         {   
-            if (tbUname.Text != "" && tbEmail.Text != "" && tbPwd.Text != "" && tbConPwd.Text != "")
+            if (tbUname.Text != "" && tbEmail.Text != "" && tbPwd.Text != "" && tbConPwd.Text != "" && tbUnder.Text != "" && tbDepartment.Text != "")
             {
                 if (tbPwd.Text == tbConPwd.Text)
                 {
                     String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(CS))
                     {
-                        SqlCommand cmd = new SqlCommand("insert into Users values('" + tbUname.Text + "', '" + tbPwd.Text + "', '" + tbEmail.Text + "', 'C')", con);
+                        SqlCommand cmd = new SqlCommand("insert into UsersData values('" + tbUname.Text + "', '" + tbEmail.Text + "',  '" + tbUnder.Text + "', '" + tbDepartment.Text + "', '" + tbPwd.Text + "', 'Pending')", con);
                         con.Open();
                         cmd.ExecuteNonQuery();
                         lbmsg.ForeColor = Color.Green;

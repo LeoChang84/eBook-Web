@@ -41,7 +41,6 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="Default.aspx">書櫃首頁</a></li>
                             <li><a href="https://www.fire.ntpc.gov.tw/">關於我們</a></li>
-                            <li><a href="https://www.fire.ntpc.gov.tw/">連絡我們</a></li>
                             <li><a href="SignUp.aspx">註冊</a></li>
                             <li><a href="SignIn.aspx">登入</a></li>
                         </ul>

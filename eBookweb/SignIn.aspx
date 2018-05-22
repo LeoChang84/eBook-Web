@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Sign In</title>
+    <title>登入頁面</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -37,8 +37,7 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="Default.aspx">書櫃首頁</a></li>
-                            <li><a href="#">關於我們</a></li>
-                            <li><a href="#">連絡我們</a></li>
+                            <li><a href="https://www.fire.ntpc.gov.tw/">關於本局</a></li>
                             <li><a href="SignUp.aspx">註冊</a></li>
                             <li class="active"><a href="SignIn.aspx">登入</a></li>
                         </ul>

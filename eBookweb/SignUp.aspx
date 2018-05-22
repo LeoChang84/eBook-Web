@@ -62,6 +62,16 @@
         <asp:TextBox ID="tbEmail" runat="server" class="form-control" placeholder="輸入信箱" TextMode="Email"></asp:TextBox>
         </div>
 
+        <label class="col-xs-11">隸屬單位/大隊</label>
+        <div class="col-xs-11">
+        <asp:TextBox ID="tbUnder" runat="server" class="form-control" placeholder="ex:第一救護大隊/局長室"></asp:TextBox>
+        </div>
+
+        <label class="col-xs-11">隸屬科室/分隊</label>
+        <div class="col-xs-11">
+        <asp:TextBox ID="tbDepartment" runat="server" class="form-control" placeholder="ex:莒光分隊/資通管考科"></asp:TextBox>
+        </div>
+
         <label class="col-xs-11">密碼</label>
         <div class="col-xs-11">
         <asp:TextBox ID="tbPwd" runat="server" class="form-control" placeholder="輸入密碼" TextMode="Password"></asp:TextBox>
