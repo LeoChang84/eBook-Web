@@ -13,85 +13,139 @@ namespace eBookweb {
     public partial class AccountMgt {
         
         /// <summary>
-        /// lbActUserName control.
+        /// lbActAddUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbActUserName;
+        protected global::System.Web.UI.WebControls.Label lbActAddUserName;
         
         /// <summary>
-        /// tbActUserName control.
+        /// tbActAddUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbActUserName;
+        protected global::System.Web.UI.WebControls.TextBox tbActAddUserName;
         
         /// <summary>
-        /// RFVActUserName control.
+        /// RFVActAddUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVActUserName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVActAddUserName;
         
         /// <summary>
-        /// lbActPwd control.
+        /// lbActAddUserEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbActPwd;
+        protected global::System.Web.UI.WebControls.Label lbActAddUserEmail;
         
         /// <summary>
-        /// tbActPwd control.
+        /// tbActAddUserEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbActPwd;
+        protected global::System.Web.UI.WebControls.TextBox tbActAddUserEmail;
         
         /// <summary>
-        /// RFVActPwd control.
+        /// RVFActAddUserEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVActPwd;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RVFActAddUserEmail;
         
         /// <summary>
-        /// lbActEmail control.
+        /// lbActAddUserUnder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbActEmail;
+        protected global::System.Web.UI.WebControls.Label lbActAddUserUnder;
         
         /// <summary>
-        /// tbActEmail control.
+        /// tbActAddUserUnder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbActEmail;
+        protected global::System.Web.UI.WebControls.TextBox tbActAddUserUnder;
         
         /// <summary>
-        /// RFVActEmail control.
+        /// RFVActAddUserUnder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVActEmail;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVActAddUserUnder;
+        
+        /// <summary>
+        /// lbActAddUserDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbActAddUserDepartment;
+        
+        /// <summary>
+        /// tbActAddUserDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbActAddUserDepartment;
+        
+        /// <summary>
+        /// RFVActAddUserDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVActAddUserDepartment;
+        
+        /// <summary>
+        /// lbActAddUserPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbActAddUserPassword;
+        
+        /// <summary>
+        /// tbActAddUserPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbActAddUserPassword;
+        
+        /// <summary>
+        /// RFVActPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVActPassword;
         
         /// <summary>
         /// btActUpload control.

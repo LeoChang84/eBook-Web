@@ -26,11 +26,11 @@ namespace eBookweb
 
         private void BindDep()
         {
-            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+            String CS =ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
                 // try to open Category for seleting cato
-                SqlCommand cmd = new SqlCommand("select * from DepCat", con);
+                SqlCommand cmd = new SqlCommand("select * from Director", con);
                 con.Open();
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -38,8 +38,8 @@ namespace eBookweb
                 if (dt.Rows.Count != 0)
                 {
                     ddlDep.DataSource = dt;
-                    ddlDep.DataTextField = "DepName";
-                    ddlDep.DataValueField = "DepId";
+                    ddlDep.DataTextField = "Department";
+                    ddlDep.DataValueField = "DirectorId";
                     ddlDep.DataBind();
                     ddlDep.Items.Insert(0, new ListItem("-選擇分類-", "0"));
                 }
@@ -48,10 +48,10 @@ namespace eBookweb
 
         private void BindRptAct()
         {
-            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+            String CS =ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from Users" , con))
+                using (SqlCommand cmd = new SqlCommand("select * from UsersData", con))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {
@@ -79,14 +79,14 @@ namespace eBookweb
             }
         }
 
-        protected void btActUploadn_Click(object sender, EventArgs e)
-        {   
+        protected void btActUpload_Click(object sender, EventArgs e)
+        {
             try
             {
-                String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+                String CS =ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
-                    SqlCommand cmd = new SqlCommand("insert into Users values('" + tbActUserName.Text + "', '" + tbActPwd.Text + "', '" + tbActEmail.Text + "', 'U')", con);
+                    SqlCommand cmd = new SqlCommand("insert into Users values('" + tbActAddUserName.Text + "', '" + tbActAddUserEmail.Text + "', '" + tbActAddUserUnder.Text + "', '" + tbActAddUserDepartment.Text + "','" + tbActAddUserPassword.Text + "',  'User')", con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     lbActmsg.ForeColor = Color.Green;
@@ -117,15 +117,17 @@ namespace eBookweb
         {
             try
             {
-                String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+                String CS =ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
-                    string query = "UPDATE Users SET Username=@Username,Password=@Password,Email=@Email,Usertype=@Usertype WHERE Uid = @id";
+                    string query = "UPDATE UsersData SET UserName=@UserName, UserEmail=@UserEmail, UserUnder=@UserUnder, UserDepartment=@UserDepartment, UserPassword=@UserPassword, UserType=@UserType WHERE UserId = @id";
                     SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.Parameters.AddWithValue("@Username", (gvAct.Rows[e.RowIndex].FindControl("tbEditUserNameAct") as TextBox).Text.Trim());
-                    cmd.Parameters.AddWithValue("@Password", (gvAct.Rows[e.RowIndex].FindControl("tbEditPwdAct") as TextBox).Text.Trim());
-                    cmd.Parameters.AddWithValue("@Email", (gvAct.Rows[e.RowIndex].FindControl("tbEditEmailAct") as TextBox).Text.Trim());
-                    cmd.Parameters.AddWithValue("@Usertype", (gvAct.Rows[e.RowIndex].FindControl("tbUsertypeAct") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@UserName", (gvAct.Rows[e.RowIndex].FindControl("tbEditActUserName") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@UserEmail", (gvAct.Rows[e.RowIndex].FindControl("tbEditActUserEmail") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@UserUnder", (gvAct.Rows[e.RowIndex].FindControl("tbEditUserActUserUnder") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@UserDepartment", (gvAct.Rows[e.RowIndex].FindControl("tbEditUserActUserDepartment") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@UserPassword", (gvAct.Rows[e.RowIndex].FindControl("tbEditUserActPassword") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@UserType", (gvAct.Rows[e.RowIndex].FindControl("tbActUserType") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@id", Convert.ToInt32(gvAct.DataKeys[e.RowIndex].Value.ToString()));
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -146,10 +148,10 @@ namespace eBookweb
         {
             try
             {
-                String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+                String CS =ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
-                    string query = "DELETE FROM Users WHERE Uid = @id";
+                    string query = "DELETE FROM UsersData WHERE UserId = @id";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@id", Convert.ToInt32(gvAct.DataKeys[e.RowIndex].Value.ToString()));
                     con.Open();
@@ -169,10 +171,10 @@ namespace eBookweb
 
         protected void ddlDep_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+            String CS =ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from Users where userDep = '" + ddlDep.SelectedItem.ToString() + "' ", con))
+                using (SqlCommand cmd = new SqlCommand("select * from UsersData where userDepartment = '" + ddlDep.SelectedItem.ToString() + "' ", con))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {
