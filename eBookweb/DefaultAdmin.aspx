@@ -1,8 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="DefaultAdmin.aspx.cs" Inherits="eBookweb.DefaultAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="CPH4Admin" runat="server">
     <div class = "row" style="background-image: url('Images/default.png')">
+        <div class="row">  
+            <div class="col-md-2 pull-right">
+                <asp:DropDownList ID="ddlDefaultAdminCat" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCat_SelectedIndexChanged"></asp:DropDownList>
+            </div>
+        </div>
+        <hr />
         <asp:Repeater ID="RptDefaultAdmin" runat="server">
-      
             <ItemTemplate>
                 <div class = "col-sm-5 col-md-2">
                     <div class = "thumbnail" style="min-height:260px;height:260px;">

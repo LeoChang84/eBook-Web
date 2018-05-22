@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserMaster.Master" AutoEventWireup="true" CodeBehind="DefaultUser.aspx.cs" Inherits="eBookweb.DefaultUser" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="CP4User" runat="server">
     <div class = "row" style="background-image: url('Images/default.png')">
+        <div class="row">  
+            <div class="col-md-2 pull-right">
+                <asp:DropDownList ID="ddlDefaultUserCat" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCat_SelectedIndexChanged"></asp:DropDownList>
+            </div>
+        </div>
+        <hr />
+        
         <asp:Repeater ID="RptDefaultUser" runat="server">
       
             <ItemTemplate>
@@ -15,7 +22,6 @@
                </div>
            </ItemTemplate>
         </asp:Repeater>
-    </div>
     </div>
     <!--- Paging -->
     <hr />

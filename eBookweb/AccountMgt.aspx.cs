@@ -19,7 +19,30 @@ namespace eBookweb
         {
             if (!IsPostBack)
             {
+                BindDep();
                 BindRptAct();
+            }
+        }
+
+        private void BindDep()
+        {
+            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                // try to open Category for seleting cato
+                SqlCommand cmd = new SqlCommand("select * from DepCat", con);
+                con.Open();
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count != 0)
+                {
+                    ddlDep.DataSource = dt;
+                    ddlDep.DataTextField = "DepName";
+                    ddlDep.DataValueField = "DepId";
+                    ddlDep.DataBind();
+                    ddlDep.Items.Insert(0, new ListItem("-選擇分類-", "0"));
+                }
             }
         }
 
@@ -141,6 +164,41 @@ namespace eBookweb
             {
                 lbActerrormsg.ForeColor = Color.Red;
                 lbActerrormsg.Text = "刪除失敗";
+            }
+        }
+
+        protected void ddlDep_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                using (SqlCommand cmd = new SqlCommand("select * from Users where userDep = '" + ddlDep.SelectedItem.ToString() + "' ", con))
+                {
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dtAct = new DataTable();
+                        sda.Fill(dtAct);
+
+
+                        if (dtAct.Rows.Count > 0)
+                        {
+                            gvAct.DataSource = dtAct;
+                            gvAct.DataBind();
+                        }
+                        else
+                        {
+                            dtAct.Rows.Add(dtAct.NewRow());
+                            gvAct.DataSource = dtAct;
+                            gvAct.DataBind();
+                            gvAct.Rows[0].Cells.Clear();
+                            gvAct.Rows[0].Cells.Add(new TableCell());
+                            gvAct.Rows[0].Cells[0].ColumnSpan = dtAct.Columns.Count;
+                            gvAct.Rows[0].Cells[0].Text = "No Data Found ..!";
+                            gvAct.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
+                        }
+
+                    }
+                }
             }
         }
     }

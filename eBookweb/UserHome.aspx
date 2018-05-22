@@ -35,11 +35,11 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="DefaultUser.aspx">Home</a></li>
-                            <li><a href="https://www.fire.ntpc.gov.tw/">About</a></li>
-                            <li><a href="https://www.fire.ntpc.gov.tw/">Contact</a></li>
+                            <li><a href="DefaultUser.aspx">書櫃首頁</a></li>
+                            <li><a href="https://www.fire.ntpc.gov.tw/">關於我們</a></li>
+                            <li><a href="https://www.fire.ntpc.gov.tw/">連絡我們</a></li>
                             <li>
-                                <asp:Button ID="btUserHomeSignOut" runat="server" class="btn btn-default navbar-btn" Text="Sign out" OnClick="btUserHomeSignOut_Click" />
+                                <asp:Button ID="btUserHomeSignOut" runat="server" class="btn btn-default navbar-btn" Text="登出" OnClick="btUserHomeSignOut_Click" />
                             </li>
                         </ul>
                     </div>
@@ -48,7 +48,7 @@
         </div>
         <asp:Label ID="lbUserHomesuccess" runat="server" CssClass="text-success"></asp:Label>
     <h3>使用者您好, 歡迎光臨新北市消防局e-book</h3>
-    <h3>請點選Home來觀看圖書</h3>
+    <h3>請至書櫃首頁來觀看圖書</h3>
     <!---  Footer  -->
     <footer class="footer-pos">
         <div class="container">

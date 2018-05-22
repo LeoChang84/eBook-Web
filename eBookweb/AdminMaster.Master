@@ -38,18 +38,20 @@
                     </div>  
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="DefaultAdmin.aspx">Home</a></li>
-                            <li><a href="https://www.fire.ntpc.gov.tw/">About</a></li>
-                            <li><a href="https://www.fire.ntpc.gov.tw/">Contact</a></li>
+                            <li><a href="DefaultAdmin.aspx">書櫃首頁</a></li>
+                            <li><a href="https://www.fire.ntpc.gov.tw/">關於我們</a></li>
+                            <li><a href="https://www.fire.ntpc.gov.tw/">連絡我們</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理設定<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="AccountMgt.aspx">Account Management</a></li>
-                                    <li><a href="FileMgt.aspx">File Management</a></li>
+                                    <li><a href="FileMgt.aspx">管理書庫</a></li>
+                                    <li><a href="AddBook.aspx">上傳新書</a></li>
+                                    <li><a href="FileMgt.aspx">書庫狀態</a></li>
+                                    <li><a href="AccountMgt.aspx">帳號管理</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <asp:Button ID="btAdminLogout" runat="server" class="btn btn-default navbar-btn" Text="Logout" OnClick="btAdminLogout_Click" CausesValidation="False" />
+                                <asp:Button ID="btAdminLogout" runat="server" class="btn btn-default navbar-btn" Text="登出" OnClick="btAdminLogout_Click" CausesValidation="False" />
                             </li>
                         </ul>
                     </div>

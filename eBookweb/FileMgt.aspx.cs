@@ -17,7 +17,30 @@ namespace eBookweb
         {
             if (!IsPostBack)
             {
+                BindCat();
                 BindRptFile();
+            }
+        }
+
+        private void BindCat()
+        {
+            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                // try to open Category for seleting cato
+                SqlCommand cmd = new SqlCommand("select * from Category", con);
+                con.Open();
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count != 0)
+                {
+                    ddlCat.DataSource = dt;
+                    ddlCat.DataTextField = "CatName";
+                    ddlCat.DataValueField = "CatId";
+                    ddlCat.DataBind();
+                    ddlCat.Items.Insert(0, new ListItem("-選擇分類-", "0"));
+                }
             }
         }
 
@@ -51,20 +74,6 @@ namespace eBookweb
 
                     }
                 }
-            }
-        }
-
-        protected void btFileUpload_Click(object sender, EventArgs e)
-        {
-            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("insert into Files values('" + tbFileName.Text + "', '" + tbFileLink.Text + "', '" + tbFileBrief.Text + "')", con);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                lbFilemsg.ForeColor = Color.Green;
-                lbFilemsg.Text = "新增成功";
-                lbFileerrormsg.Text = "";
             }
         }
 
@@ -133,6 +142,63 @@ namespace eBookweb
             gvFile.EditIndex = -1;
             lbFileerrormsg.Text = "";
             BindRptFile();
+        }
+
+        protected void btCatUpload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("insert into Category values( '" + tbCatName.Text + "')", con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    lbCatmsg.ForeColor = Color.Green;
+                    lbCatmsg.Text = "新增成功";
+                }
+            }
+            catch (Exception ex)
+            {
+                lbCatmsg.ForeColor = Color.Red;
+                lbCatmsg.Text = "新增失敗";
+            }
+        }
+
+        protected void ddlCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                using (SqlCommand cmd = new SqlCommand("select * from Files where FileCat = '"+ ddlCat.SelectedItem.ToString() +"' ", con))
+                {
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {   
+                        DataTable dtFile = new DataTable();
+                        sda.Fill(dtFile);
+                       
+                        
+                        if (dtFile.Rows.Count > 0)
+                        {
+                            gvFile.DataSource = dtFile;
+                            gvFile.DataBind();
+                        }
+                        else
+                        {
+                            dtFile.Rows.Add(dtFile.NewRow());
+                            gvFile.DataSource = dtFile;
+                            gvFile.DataBind();
+                            gvFile.Rows[0].Cells.Clear();
+                            gvFile.Rows[0].Cells.Add(new TableCell());
+                            gvFile.Rows[0].Cells[0].ColumnSpan = dtFile.Columns.Count;
+                            gvFile.Rows[0].Cells[0].Text = "No Data Found ..!";
+                            gvFile.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
+                        }
+
+                    }
+                }
+            }
         }
     }
 }

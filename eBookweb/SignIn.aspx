@@ -36,11 +36,11 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="Default.aspx">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="SignUp.aspx">Sign Up</a></li>
-                            <li class="active"><a href="SignIn.aspx">Sign In</a></li>
+                            <li><a href="Default.aspx">書櫃首頁</a></li>
+                            <li><a href="#">關於我們</a></li>
+                            <li><a href="#">連絡我們</a></li>
+                            <li><a href="SignUp.aspx">註冊</a></li>
+                            <li class="active"><a href="SignIn.aspx">登入</a></li>
                         </ul>
                     </div>
                 </div>

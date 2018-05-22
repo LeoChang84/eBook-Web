@@ -33,7 +33,15 @@
                 </div>
             </div>
         </div>
+    
         <h2>帳號管理名單</h2>
+        <hr />
+        <div class="row">  
+            <div class="col-md-2 pull-right" aria-atomic="False">
+                <asp:DropDownList ID="ddlDep" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlDep_SelectedIndexChanged"></asp:DropDownList>
+            </div>
+        </div>
+        <br />
         <div class = "panel panel-default">
             <div class = "panel-heading">Panel Heading</div>
             <asp:GridView ID="gvAct" runat="server" AutoGenerateColumns="False"  ShowHeaderWhenEmpty="True" Height="250px" Width="100%" OnRowEditing="gvAct_RowEditing" OnRowCancelingEdit="gvAct_RowCancelingEdit" OnRowUpdating="gvAct_RowUpdating" OnRowDeleting="gvAct_RowDeleting" DataKeyNames="Uid" >

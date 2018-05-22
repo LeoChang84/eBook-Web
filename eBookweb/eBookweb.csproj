@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccountMgt.aspx" />
+    <Content Include="AddBook.aspx" />
+    <Content Include="AdminBookStatus.aspx" />
     <Content Include="AdminHome.aspx" />
     <Content Include="App_Data\db4Login.mdf" />
     <Content Include="App_Data\db4Login_log.ldf">
@@ -128,6 +130,7 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="SignIn.aspx" />
     <Content Include="SignUp.aspx" />
+    <Content Include="UserBookStatus.aspx" />
     <Content Include="UserHome.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -140,6 +143,20 @@
     </Compile>
     <Compile Include="AccountMgt.aspx.designer.cs">
       <DependentUpon>AccountMgt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddBook.aspx.cs">
+      <DependentUpon>AddBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddBook.aspx.designer.cs">
+      <DependentUpon>AddBook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminBookStatus.aspx.cs">
+      <DependentUpon>AdminBookStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminBookStatus.aspx.designer.cs">
+      <DependentUpon>AdminBookStatus.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminHome.aspx.cs">
       <DependentUpon>AdminHome.aspx</DependentUpon>
@@ -200,6 +217,13 @@
     </Compile>
     <Compile Include="SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserBookStatus.aspx.cs">
+      <DependentUpon>UserBookStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserBookStatus.aspx.designer.cs">
+      <DependentUpon>UserBookStatus.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserHome.aspx.cs">
       <DependentUpon>UserHome.aspx</DependentUpon>

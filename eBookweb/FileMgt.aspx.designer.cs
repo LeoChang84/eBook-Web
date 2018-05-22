@@ -13,103 +13,58 @@ namespace eBookweb {
     public partial class FileMgt {
         
         /// <summary>
-        /// lbFileName control.
+        /// lbCatName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbFileName;
+        protected global::System.Web.UI.WebControls.Label lbCatName;
         
         /// <summary>
-        /// tbFileName control.
+        /// tbCatName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbFileName;
+        protected global::System.Web.UI.WebControls.TextBox tbCatName;
         
         /// <summary>
-        /// RFVFileName control.
+        /// RFVCatName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVFileName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVCatName;
         
         /// <summary>
-        /// lbFileLink control.
+        /// btCatUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbFileLink;
+        protected global::System.Web.UI.WebControls.Button btCatUpload;
         
         /// <summary>
-        /// tbFileLink control.
+        /// lbCatmsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbFileLink;
+        protected global::System.Web.UI.WebControls.Label lbCatmsg;
         
         /// <summary>
-        /// RFVFileLink control.
+        /// ddlCat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVFileLink;
-        
-        /// <summary>
-        /// lbFileBrief control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbFileBrief;
-        
-        /// <summary>
-        /// tbFileBrief control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbFileBrief;
-        
-        /// <summary>
-        /// RFVFileBrief control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVFileBrief;
-        
-        /// <summary>
-        /// btFileUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btFileUpload;
-        
-        /// <summary>
-        /// lbFilemsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbFilemsg;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCat;
         
         /// <summary>
         /// gvFile control.
