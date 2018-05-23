@@ -49,7 +49,7 @@ namespace eBookweb
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from UsersData", con))
+                using (SqlCommand cmd = new SqlCommand("select * from UsersData where UserType != 'Admin' and UserType != 'Manager'  ", con))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {
@@ -118,14 +118,18 @@ namespace eBookweb
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
-                    string query = "UPDATE UsersData SET UserName=@UserName, UserEmail=@UserEmail, UserUnder=@UserUnder, UserDepartment=@UserDepartment, UserPassword=@UserPassword, UserType=@UserType WHERE UserId = @id";
+                    string query = "UPDATE UsersData SET UserName=@UserName, UserEmail=@UserEmail, UserUnder=@UserUnder, UserDepartment=@UserDepartment, UserPassword=@UserPassword, UserType=@UserType WHERE UserId = @id ";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@UserName", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserName") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@UserEmail", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserEmail") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@UserUnder", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserUnder") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@UserDepartment", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserDepartment") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@UserPassword", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActPassword") as TextBox).Text.Trim());
-                    cmd.Parameters.AddWithValue("@UserType", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserType") as TextBox).Text.Trim());
+                    if ((gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserType") as TextBox).Text.Trim() == "User" ||
+                        (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserType") as TextBox).Text.Trim() == "Pending")
+                    {
+                        cmd.Parameters.AddWithValue("@UserType", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserType") as TextBox).Text.Trim());
+                    }
                     cmd.Parameters.AddWithValue("@id", Convert.ToInt32(gvManagerAct.DataKeys[e.RowIndex].Value.ToString()));
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -138,7 +142,7 @@ namespace eBookweb
             catch (Exception ex)
             {
                 lbManagerActerrormsg.ForeColor = Color.Red;
-                lbManagerActerrormsg.Text = "上傳失敗";
+                lbManagerActerrormsg.Text = "上傳失敗, 請確認使用者狀態為User或Pending";
             }
         }
 
