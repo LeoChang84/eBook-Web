@@ -47,7 +47,7 @@
                                     <li><a href="FileMgt.aspx">管理書庫</a></li>
                                     <li><a href="AddBook.aspx">上傳新書</a></li>
                                     <li><a href="AdminBookStatus.aspx">書庫狀態</a></li>
-                                    <li><a href="AccountMgt.aspx">帳號管理</a></li>
+                                    <li><a href="ManagerAccountMgt.aspx">帳號管理</a></li>
                                 </ul>
                             </li>
                             <li>

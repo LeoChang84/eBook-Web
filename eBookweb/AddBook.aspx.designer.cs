@@ -94,6 +94,33 @@ namespace eBookweb {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVAddLink;
         
         /// <summary>
+        /// lbAddUploadDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAddUploadDepartment;
+        
+        /// <summary>
+        /// ddlDep control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDep;
+        
+        /// <summary>
+        /// RFVAddUploadDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVAddUploadDepartment;
+        
+        /// <summary>
         /// btAddUpload control.
         /// </summary>
         /// <remarks>

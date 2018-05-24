@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Drawing;
+using System.Globalization;
 
 namespace eBookweb
 {
@@ -18,6 +19,7 @@ namespace eBookweb
             if (!IsPostBack)
             {
                 BindCat();
+                BindDep();
             }
         }
 
@@ -27,7 +29,7 @@ namespace eBookweb
             using (SqlConnection con = new SqlConnection(CS))
             {
                 // try to open Category for seleting cato
-                SqlCommand cmd = new SqlCommand("select * from Category", con);
+                SqlCommand cmd = new SqlCommand("select * from BookCategory", con);
                 con.Open();
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -35,10 +37,32 @@ namespace eBookweb
                 if (dt.Rows.Count != 0)
                 {
                     ddlCat.DataSource = dt;
-                    ddlCat.DataTextField = "CatName";
-                    ddlCat.DataValueField = "CatId";
+                    ddlCat.DataTextField = "BookName";
+                    ddlCat.DataValueField = "BookSelectedValue";
                     ddlCat.DataBind();
-                    ddlCat.Items.Insert(0, new ListItem("-選擇分類-", "0"));
+                    ddlCat.Items.Insert(0, new ListItem("-選擇分類-", "%"));
+                }
+            }
+        }
+        
+        private void BindDep()
+        {
+            String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                // try to open Category for seleting cato
+                SqlCommand cmd = new SqlCommand("select * from DepartmentCategory", con);
+                con.Open();
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count != 0)
+                {
+                    ddlDep.DataSource = dt;
+                    ddlDep.DataTextField = "DepartmentName";
+                    ddlDep.DataValueField = "DepartmentSelectedValue";
+                    ddlDep.DataBind();
+                    ddlDep.Items.Insert(0, new ListItem("-選擇分類-", "%"));
                 }
             }
         }
@@ -50,7 +74,8 @@ namespace eBookweb
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
-                    SqlCommand cmd = new SqlCommand("insert into Files values('" + tbAddName.Text + "', '" + tbAddLink.Text + "', '" + ddlCat.SelectedItem + "', 'N')", con);
+                    String Img_Path = "Images/Books/" + ddlCat.SelectedValue.ToString() + ".jpg";
+                    SqlCommand cmd = new SqlCommand("insert into FilesData (FileName, FileLink, ImgPath, FileCategoryIndex) values ('" + tbAddName.Text + "', '" + tbAddLink.Text + "', '" + Img_Path + "' , '" + ddlCat.SelectedValue + "', '" + ddlDep.SelectedValue + "' )", con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     lbAddmsg.ForeColor = Color.Green;

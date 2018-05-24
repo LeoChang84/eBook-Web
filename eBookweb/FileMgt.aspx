@@ -12,6 +12,13 @@
                 </div>
             </div>
             <div class="form-group">
+                <asp:Label ID="lbCatValue" runat="server" CssClass="col-md-2 control-label" Text="輸入分類序號:"></asp:Label>
+                <div class="col-md-3">
+                    <asp:TextBox ID = "tbCatValue" CssClass="form-contorl" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RFVCatValue" CssClass="text-danger" runat="server" ErrorMessage="填入分類序號" ControlToValidate="tbCatValue"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-6">
                     <asp:Button ID="btCatUpload" runat="server" Text="新增至資料庫" CssClass="btn btn-default" OnClick="btCatUpload_Click"></asp:Button>
@@ -31,14 +38,14 @@
         </div>
         <div class = "panel panel-default">
             <div class = "panel-heading">檔名分類</div>
-            <asp:GridView ID="gvFile" runat="server" AutoGenerateColumns="False"  ShowHeaderWhenEmpty="True" Height="200px" Width="100%" OnRowEditing="gvFile_RowEditing" OnRowCancelingEdit="gvFile_RowCancelingEdit" OnRowUpdating="gvFile_RowUpdating" OnRowDeleting="gvFile_RowDeleting" DataKeyNames="Id" >
+            <asp:GridView ID="gvFile" runat="server" AutoGenerateColumns="False"  ShowHeaderWhenEmpty="True" Height="200px" Width="100%" OnRowEditing="gvFile_RowEditing" OnRowCancelingEdit="gvFile_RowCancelingEdit" OnRowUpdating="gvFile_RowUpdating" OnRowDeleting="gvFile_RowDeleting" DataKeyNames="FileId" >
                 <Columns>
                     <asp:TemplateField HeaderText="檔案名稱">
                         <ItemTemplate>
-                            <asp:Label ID="lbNameFile" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                            <asp:Label ID="lbNameFile" runat="server" Text='<%# Eval("FileName") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="tbEditNameFile" runat="server" Text='<%# Eval("Name") %>'></asp:TextBox>
+                            <asp:TextBox ID="tbEditNameFile" runat="server" Text='<%# Eval("FileName") %>'></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="tbFooterEditNameFile" runat="server"></asp:TextBox>
@@ -47,25 +54,37 @@
 
                     <asp:TemplateField HeaderText="檔案連結">
                         <ItemTemplate>
-                            <asp:Label ID="lbLinkFile" runat="server" Text='<%# Eval("Link") %>'></asp:Label>
+                            <asp:Label ID="lbLinkFile" runat="server" Text='<%# Eval("FileLink") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="tbEditLinkFile" runat="server" Text='<%# Eval("Link") %>'></asp:TextBox>
+                            <asp:TextBox ID="tbEditLinkFile" runat="server" Text='<%# Eval("FileLink") %>'></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="tbFooterLinkFile" runat="server"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="檔案簡述">
+                    <asp:TemplateField HeaderText="檔案類別">
                         <ItemTemplate>
-                            <asp:Label ID="lbBriefFile" runat="server" Text='<%# Eval("Brief") %>'></asp:Label>
+                            <asp:Label ID="lbIndexFile" runat="server" Text='<%# Eval("FileCategoryIndex") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="tbEditBriefFile" runat="server" Text='<%# Eval("Brief") %>'></asp:TextBox>
+                            <asp:TextBox ID="tbEditIndexFile" runat="server" Text='<%# Eval("FileCategoryIndex") %>'></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="tbFooterEditBriefFile" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tbFooterEditIndexFile" runat="server"></asp:TextBox>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="上傳科室">
+                        <ItemTemplate>
+                            <asp:Label ID="lbUploadFile" runat="server" Text='<%# Eval("FileUploadDepartment") %>'></asp:Label>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox ID="tbEditUploadFile" runat="server" Text='<%# Eval("FileUploadDepartment") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox ID="tbFooterEditUploadFile" runat="server"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
 

@@ -25,6 +25,13 @@
                     <asp:RequiredFieldValidator ID="RFVAddLink" CssClass="text-danger" runat="server" ErrorMessage="填入檔案連結" ControlToValidate="tbAddLink"></asp:RequiredFieldValidator>
                 </div>
             </div>
+            <div class="form-group">
+                <asp:Label ID="lbAddUploadDepartment" runat="server" CssClass="col-md-2 control-label" Text="選擇上傳科室:"></asp:Label>
+                <div class="col-md-3">
+                    <asp:DropDownList ID="ddlDep" CssClass="form-control" runat="server"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RFVAddUploadDepartment" CssClass="text-danger" runat="server" ErrorMessage="請選擇檔案類別" ControlToValidate="ddlDep" InitialValue="0"></asp:RequiredFieldValidator>
+                </div>
+            </div>
 
             <div class="form-group">
                 <div class="col-md-2"></div>

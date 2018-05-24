@@ -28,7 +28,7 @@ namespace eBookweb
             using (SqlConnection con = new SqlConnection(CS))
             {
                 // try to open Category for seleting cato
-                SqlCommand cmd = new SqlCommand("select * from Category", con);
+                SqlCommand cmd = new SqlCommand("select * from BookCategory", con);
                 con.Open();
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -36,10 +36,10 @@ namespace eBookweb
                 if (dt.Rows.Count != 0)
                 {
                     ddlCat.DataSource = dt;
-                    ddlCat.DataTextField = "CatName";
-                    ddlCat.DataValueField = "CatId";
+                    ddlCat.DataTextField = "BookName";
+                    ddlCat.DataValueField = "BookSelectedValue";
                     ddlCat.DataBind();
-                    ddlCat.Items.Insert(0, new ListItem("-選擇分類-", "0"));
+                    ddlCat.Items.Insert(0, new ListItem("-選擇分類-", "%"));
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace eBookweb
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from Files", con))
+                using (SqlCommand cmd = new SqlCommand("select * from FilesData", con))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {
@@ -91,11 +91,12 @@ namespace eBookweb
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
-                    string query = "UPDATE Files SET Name=@Name, Link=@Link, Brief=@Brief WHERE Id = @id";
+                    string query = "UPDATE FilesData SET FileName=@Name, FileLink=@Link, FileCategoryIndex=@Index FileUploadDepartment=@Upload WHERE FileId = @id";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Name", (gvFile.Rows[e.RowIndex].FindControl("tbEditNameFile") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@Link", (gvFile.Rows[e.RowIndex].FindControl("tbEditLinkFile") as TextBox).Text.Trim());
-                    cmd.Parameters.AddWithValue("@Brief", (gvFile.Rows[e.RowIndex].FindControl("tbEditBriefFile") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@Index", (gvFile.Rows[e.RowIndex].FindControl("tbEditIndexFile") as TextBox).Text.Trim());
+                    cmd.Parameters.AddWithValue("@Upload", (gvFile.Rows[e.RowIndex].FindControl("tbEditUploadFile") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@id", Convert.ToInt32(gvFile.DataKeys[e.RowIndex].Value.ToString()));
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -119,7 +120,7 @@ namespace eBookweb
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
-                    string query = "DELETE FROM Files WHERE Id = @id";
+                    string query = "DELETE FROM FilesData WHERE FileId = @id";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@id", Convert.ToInt32(gvFile.DataKeys[e.RowIndex].Value.ToString()));
                     con.Open();
@@ -151,7 +152,7 @@ namespace eBookweb
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(CS))
                 {
-                    SqlCommand cmd = new SqlCommand("insert into Category values( '" + tbCatName.Text + "')", con);
+                    SqlCommand cmd = new SqlCommand("insert into DepartmentCategory values( '" + tbCatName.Text + "', '" + tbCatValue.Text + "' )", con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     lbCatmsg.ForeColor = Color.Green;
@@ -171,7 +172,7 @@ namespace eBookweb
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from Files where FileCat = '"+ ddlCat.SelectedItem.ToString() +"' ", con))
+                using (SqlCommand cmd = new SqlCommand("select * from FilesData where FileCategoryIndex = '"+ ddlCat.SelectedValue +"' ", con))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {   
