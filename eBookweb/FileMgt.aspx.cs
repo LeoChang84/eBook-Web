@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Drawing;
 
@@ -25,12 +26,12 @@ namespace eBookweb
         private void BindCat()
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
                 // try to open Category for seleting cato
-                SqlCommand cmd = new SqlCommand("select * from BookCategory", con);
+                MySqlCommand cmd = new MySqlCommand("select * from BookCategory", con);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 if (dt.Rows.Count != 0)
@@ -47,11 +48,11 @@ namespace eBookweb
         private void BindRptFile()
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from FilesData", con))
+                using (MySqlCommand cmd = new MySqlCommand("select * from FilesData", con))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {
                         DataTable dtFile = new DataTable();
                         sda.Fill(dtFile);
@@ -89,10 +90,10 @@ namespace eBookweb
             try
             {
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
+                using (MySqlConnection con = new MySqlConnection(CS))
                 {
-                    string query = "UPDATE FilesData SET FileName=@Name, FileLink=@Link, FileCategoryIndex=@Index FileUploadDepartment=@Upload WHERE FileId = @id";
-                    SqlCommand cmd = new SqlCommand(query, con);
+                    string query = "UPDATE FilesData SET FileName=@Name, FileLink=@Link, FileCategoryIndex=@Index, FileUploadDepartment=@Upload WHERE FileId = @id";
+                    MySqlCommand cmd = new MySqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Name", (gvFile.Rows[e.RowIndex].FindControl("tbEditNameFile") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@Link", (gvFile.Rows[e.RowIndex].FindControl("tbEditLinkFile") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@Index", (gvFile.Rows[e.RowIndex].FindControl("tbEditIndexFile") as TextBox).Text.Trim());
@@ -118,10 +119,10 @@ namespace eBookweb
             try
             {
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
+                using (MySqlConnection con = new MySqlConnection(CS))
                 {
                     string query = "DELETE FROM FilesData WHERE FileId = @id";
-                    SqlCommand cmd = new SqlCommand(query, con);
+                    MySqlCommand cmd = new MySqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@id", Convert.ToInt32(gvFile.DataKeys[e.RowIndex].Value.ToString()));
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -150,9 +151,9 @@ namespace eBookweb
             try
             {
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
+                using (MySqlConnection con = new MySqlConnection(CS))
                 {
-                    SqlCommand cmd = new SqlCommand("insert into DepartmentCategory values( '" + tbCatName.Text + "', '" + tbCatValue.Text + "' )", con);
+                    MySqlCommand cmd = new MySqlCommand("insert into BookCategory (BookName, BookSelectedValue) values( '" + tbCatName.Text + "', '" + tbCatValue.Text + "' )", con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     lbCatmsg.ForeColor = Color.Green;
@@ -170,11 +171,11 @@ namespace eBookweb
         {
 
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from FilesData where FileCategoryIndex = '"+ ddlCat.SelectedValue +"' ", con))
+                using (MySqlCommand cmd = new MySqlCommand("select * from FilesData where FileCategoryIndex = '"+ ddlCat.SelectedValue +"' ", con))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {   
                         DataTable dtFile = new DataTable();
                         sda.Fill(dtFile);

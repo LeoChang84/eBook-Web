@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Drawing;
 
@@ -25,9 +26,9 @@ namespace eBookweb
                 if (tbPwd.Text == tbConPwd.Text)
                 {
                     String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-                    using (SqlConnection con = new SqlConnection(CS))
+                    using (MySqlConnection con = new MySqlConnection(CS))
                     {
-                        SqlCommand cmd = new SqlCommand("insert into UsersData values('" + tbUname.Text + "', '" + tbEmail.Text + "',  '" + tbUnder.Text + "', '" + tbDepartment.Text + "', '" + tbPwd.Text + "', 'Pending')", con);
+                        MySqlCommand cmd = new MySqlCommand("insert into UsersData (UserName, UserEmail, UserUnder, UserDepartmentValue, UserPassword, UserType) values('" + tbUname.Text + "', '" + tbEmail.Text + "',  '" + tbUnder.Text + "', '" + tbDepartment.Text + "', '" + tbPwd.Text + "', 'Pending')", con);
                         con.Open();
                         cmd.ExecuteNonQuery();
                         lbmsg.ForeColor = Color.Green;

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
@@ -31,11 +32,11 @@ namespace eBookweb
             try
             {
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
+                using (MySqlConnection con = new MySqlConnection(CS))
                 {
-                    SqlCommand cmd = new SqlCommand("select * from UsersData where UserName='" + tbSignInUserName.Text + "' and UserPassword='" + tbSignInPwd.Text + "' ", con);
+                    MySqlCommand cmd = new MySqlCommand("select * from UsersData where UserName='" + tbSignInUserName.Text + "' and UserPassword='" + tbSignInPwd.Text + "' ", con);
                     con.Open();
-                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                    MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
                     if (dt.Rows.Count != 0)

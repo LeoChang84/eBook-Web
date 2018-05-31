@@ -56,3 +56,4 @@ C:\Users\Leo\source\repos\eBookweb\eBookweb\obj\Debug\eBookweb.csproj.CoreCompil
 C:\Users\Leo\source\repos\eBookweb\eBookweb\obj\Debug\eBookweb.csproj.CopyComplete
 C:\Users\Leo\source\repos\eBookweb\eBookweb\obj\Debug\eBookweb.dll
 C:\Users\Leo\source\repos\eBookweb\eBookweb\obj\Debug\eBookweb.pdb
+C:\Users\Leo\source\repos\eBookweb\eBookweb\bin\MySql.Data.dll

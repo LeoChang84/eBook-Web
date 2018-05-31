@@ -95,10 +95,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="隸屬分隊/科室">
                         <ItemTemplate>
-                            <asp:Label ID="lbManagerActUserDepartment" runat="server" Text='<%# Eval("UserDepartment") %>'></asp:Label>
+                            <asp:Label ID="lbManagerActUserDepartment" runat="server" Text='<%# Eval("UserDepartmentValue") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="tbEditManagerActUserDepartment" runat="server" Text='<%# Eval("UserDepartment") %>'></asp:TextBox>
+                            <asp:TextBox ID="tbEditManagerActUserDepartment" runat="server" Text='<%# Eval("UserDepartmentValue") %>'></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="tbFooterManagerActUserDepartment" runat="server"></asp:TextBox>

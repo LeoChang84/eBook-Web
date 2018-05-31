@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Drawing;
 using Pagination;
@@ -27,11 +28,11 @@ namespace eBookweb
         private void BindFilesRepeater()
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from Files order by Id", con))
+                using (MySqlCommand cmd = new MySqlCommand("select * from FilesData order by FileId DESC", con))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {
                         DataTable dtDefaultUser = new DataTable();
                         sda.Fill(dtDefaultUser);
@@ -96,12 +97,12 @@ namespace eBookweb
                 protected void ddlCat_SelectedIndexChanged(object sender, EventArgs e)
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
 
-                using (SqlCommand cmd = new SqlCommand("select * from Files where FileCat = '" + ddlDefaultUserCat.SelectedItem.ToString() + "'", con))
+                using (MySqlCommand cmd = new MySqlCommand("select * from FilesData where FileCategoryIndex = '" + ddlDefaultUserCat.SelectedValue + "'", con))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {
                         DataTable dtDefaultUser = new DataTable();
                         sda.Fill(dtDefaultUser);
@@ -144,19 +145,19 @@ namespace eBookweb
         private void BindCat()
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
                 // try to open Category for seleting cato
-                SqlCommand cmd = new SqlCommand("select * from Category", con);
+                MySqlCommand cmd = new MySqlCommand("select * from BookCategory", con);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 if (dt.Rows.Count != 0)
                 {
                     ddlDefaultUserCat.DataSource = dt;
-                    ddlDefaultUserCat.DataTextField = "CatName";
-                    ddlDefaultUserCat.DataValueField = "CatId";
+                    ddlDefaultUserCat.DataTextField = "BookName";
+                    ddlDefaultUserCat.DataValueField = "BookSelectedValue";
                     ddlDefaultUserCat.DataBind();
                     ddlDefaultUserCat.Items.Insert(0, new ListItem("-選擇分類-", "0"));
                 }

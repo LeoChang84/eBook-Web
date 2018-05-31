@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Drawing;
 using System.Globalization;
@@ -26,12 +27,12 @@ namespace eBookweb
         private void BindCat()
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
                 // try to open Category for seleting cato
-                SqlCommand cmd = new SqlCommand("select * from BookCategory", con);
+                MySqlCommand cmd = new MySqlCommand("select * from BookCategory", con);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 if (dt.Rows.Count != 0)
@@ -48,12 +49,12 @@ namespace eBookweb
         private void BindDep()
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
                 // try to open Category for seleting cato
-                SqlCommand cmd = new SqlCommand("select * from DepartmentCategory", con);
+                MySqlCommand cmd = new MySqlCommand("select * from DepartmentCategory", con);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 if (dt.Rows.Count != 0)
@@ -72,10 +73,10 @@ namespace eBookweb
             try
             {
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
+                using (MySqlConnection con = new MySqlConnection(CS))
                 {
                     String Img_Path = "Images/Books/" + ddlCat.SelectedValue.ToString() + ".jpg";
-                    SqlCommand cmd = new SqlCommand("insert into FilesData (FileName, FileLink, ImgPath, FileCategoryIndex) values ('" + tbAddName.Text + "', '" + tbAddLink.Text + "', '" + Img_Path + "' , '" + ddlCat.SelectedValue + "', '" + ddlDep.SelectedValue + "' )", con);
+                    MySqlCommand cmd = new MySqlCommand("insert into FilesData (FileName, FileLink, ImgPath, FileCategoryIndex, FileUploadDepartment) values ('" + tbAddName.Text + "', '" + tbAddLink.Text + "', '" + Img_Path + "' , '" + ddlCat.SelectedValue + "', '" + ddlDep.SelectedValue + "' )", con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     lbAddmsg.ForeColor = Color.Green;

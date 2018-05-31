@@ -11,7 +11,7 @@
             <Columns>
                 <asp:TemplateField HeaderText="檔案名稱">
                     <ItemTemplate>
-                        <asp:Label ID="lbFileCat" runat="server" Text='<%# Eval("FileCat") %>'></asp:Label>
+                        <asp:Label ID="lbFileCat" runat="server" Text='<%# Eval("FileCategoryIndex") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="檔案數量">

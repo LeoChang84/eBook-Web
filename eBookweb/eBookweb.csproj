@@ -45,6 +45,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\..\Windows\SysWOW64\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Pagination, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ref\Pagination.dll</HintPath>

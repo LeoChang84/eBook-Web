@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Drawing;
 
@@ -25,19 +26,19 @@ namespace eBookweb
         private void BindDep()
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
                 // try to open Category for seleting cato
-                SqlCommand cmd = new SqlCommand("select * from Director", con);
+                MySqlCommand cmd = new MySqlCommand("select * from DepartmentCategory", con);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 if (dt.Rows.Count != 0)
                 {
                     ddlDep.DataSource = dt;
-                    ddlDep.DataTextField = "Department";
-                    ddlDep.DataValueField = "DirectorId";
+                    ddlDep.DataTextField = "DepartmentName";
+                    ddlDep.DataValueField = "DepartmentSelectedValue";
                     ddlDep.DataBind();
                     ddlDep.Items.Insert(0, new ListItem("-選擇分類-", "0"));
                 }
@@ -47,11 +48,11 @@ namespace eBookweb
         private void BindRptAct()
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from UsersData where UserType != 'Admin' and UserType != 'Manager'  ", con))
+                using (MySqlCommand cmd = new MySqlCommand("select * from UsersData where UserType != 'Admin' and UserType != 'Manager'  ", con))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {
                         DataTable dtAct = new DataTable();
                         sda.Fill(dtAct);
@@ -82,9 +83,9 @@ namespace eBookweb
             try
             {
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
+                using (MySqlConnection con = new MySqlConnection(CS))
                 {
-                    SqlCommand cmd = new SqlCommand("insert into Users values('" + tbManagerActAddUserName.Text + "', '" + tbManagerActAddUserEmail.Text + "', '" + tbManagerActAddUserUnder.Text + "', '" + tbManagerActAddUserDepartment.Text + "','" + tbManagerActAddUserPassword.Text + "',  'User')", con);
+                    MySqlCommand cmd = new MySqlCommand("insert into UsersData (UserName, UserEmail, UserUnder, UserDepartmentValue, UserPassword, UserType) values('" + tbManagerActAddUserName.Text + "', '" + tbManagerActAddUserEmail.Text + "', '" + tbManagerActAddUserUnder.Text + "', '" + tbManagerActAddUserDepartment.Text + "','" + tbManagerActAddUserPassword.Text + "',  'User')", con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     lbManagerActmsg.ForeColor = Color.Green;
@@ -116,10 +117,10 @@ namespace eBookweb
             try
             {
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
+                using (MySqlConnection con = new MySqlConnection(CS))
                 {
-                    string query = "UPDATE UsersData SET UserName=@UserName, UserEmail=@UserEmail, UserUnder=@UserUnder, UserDepartment=@UserDepartment, UserPassword=@UserPassword, UserType=@UserType WHERE UserId = @id ";
-                    SqlCommand cmd = new SqlCommand(query, con);
+                    string query = "UPDATE UsersData SET UserName=@UserName, UserEmail=@UserEmail, UserUnder=@UserUnder, UserDepartmentValue=@UserDepartment, UserPassword=@UserPassword, UserType=@UserType WHERE UserId = @id ";
+                    MySqlCommand cmd = new MySqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@UserName", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserName") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@UserEmail", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserEmail") as TextBox).Text.Trim());
                     cmd.Parameters.AddWithValue("@UserUnder", (gvManagerAct.Rows[e.RowIndex].FindControl("tbEditManagerActUserUnder") as TextBox).Text.Trim());
@@ -151,10 +152,10 @@ namespace eBookweb
             try
             {
                 String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(CS))
+                using (MySqlConnection con = new MySqlConnection(CS))
                 {
                     string query = "DELETE FROM UsersData WHERE UserId = @id";
-                    SqlCommand cmd = new SqlCommand(query, con);
+                    MySqlCommand cmd = new MySqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@id", Convert.ToInt32(gvManagerAct.DataKeys[e.RowIndex].Value.ToString()));
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -174,11 +175,11 @@ namespace eBookweb
         protected void ddlDep_SelectedIndexChanged(object sender, EventArgs e)
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from UsersData where userDepartment = '" + ddlDep.SelectedItem.ToString() + "' ", con))
+                using (MySqlCommand cmd = new MySqlCommand("select * from UsersData where userDepartmentValue = '" + ddlDep.SelectedValue + "' ", con))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {
                         DataTable dtAct = new DataTable();
                         sda.Fill(dtAct);

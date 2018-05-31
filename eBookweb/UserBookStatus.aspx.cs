@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Drawing;
 
@@ -23,11 +24,11 @@ namespace eBookweb
         private void BindRptBookStatus()
         {
             String CS = ConfigurationManager.ConnectionStrings["db4LoginConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
+            using (MySqlConnection con = new MySqlConnection(CS))
             {
-                using (SqlCommand cmd = new SqlCommand("select FileCat, Count(FileCat) As TotalNum From Files Group by FileCat", con))
+                using (MySqlCommand cmd = new MySqlCommand("select FileCategoryIndex, Count(FileCategoryIndex) As TotalNum From FilesData Group by FileCategoryIndex", con))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
                     {
                         DataTable dtFile = new DataTable();
                         sda.Fill(dtFile);

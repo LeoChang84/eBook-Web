@@ -12,10 +12,10 @@
             <ItemTemplate>
                 <div class = "col-sm-5 col-md-2">
                     <div class = "thumbnail" style="min-height:290px;height:300px;">
-                        <a href="<%# (Eval("Link")) %>">
+                        <a href="<%# (Eval("FileLink")) %>">
                             <img src = "<%# (Eval("ImgPath")) %>"  alt = "Generic placeholder thumbnail">
                         </a>    
-                        <div class = "caption" style="width:160px;overflow:hidden;height:70px;line-height:20px;"><%#Eval("Brief") %></div>
+                        <div class = "caption" style="width:160px;overflow:hidden;height:70px;line-height:20px;"><%#Eval("FileName") %></div>
                         <br />
                     </div>
                 </div>
